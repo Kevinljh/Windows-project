@@ -1,1 +1,10 @@
 C:\Users\Jli1-cc\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe.config
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe.config
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\bin\Debug\Project.pdb
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.ServerForm.resources
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.exe
+C:\Users\User1\Documents\GitHub\Windows-project\Project\Project\obj\Debug\Project.pdb
