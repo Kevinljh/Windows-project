@@ -24,6 +24,12 @@ namespace ClientApp
     public sealed partial class MainPage : Page
     {
 
+        DispatcherTimer dispatcherTimer;
+        int GameState = 0;
+        int seconds2 = 0;
+        int seconds = 0;
+        int minute = 0;
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -66,6 +72,25 @@ namespace ClientApp
         /// session. The state will be null the first time a page is visited.</param>
         private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+                Windows.Storage.ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values.ContainsKey("Abutton"))
+            {
+                // Abutton = (int)roamingSettings.Values["Abutton"];
+            }
+            if (roamingSettings.Values.ContainsKey("Bbutton"))
+            {
+                // Abutton = (int)roamingSettings.Values["Abutton"];
+            }
+            if (roamingSettings.Values.ContainsKey("Cbutton"))
+            {
+                // Abutton = (int)roamingSettings.Values["Abutton"];
+            }
+            if (roamingSettings.Values.ContainsKey("Dbutton"))
+            {
+                // Abutton = (int)roamingSettings.Values["Abutton"];
+            }
+
         }
 
         /// <summary>
@@ -102,6 +127,80 @@ namespace ClientApp
         }
 
         #endregion
+
+        // NAME     :   DispatcherTimerSetup()
+        // PURPOSE  :   Setups the dispatcherTimer, and adds the ticks together 
+        public void DispatcherTimerSetup()
+        {
+
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
+        }
+
+        // NAME     :   dispatcherTimer_Tick()
+        // PURPOSE  :   Acts as the clock, every second/tick, 1 is added to the seconds
+        void dispatcherTimer_Tick(object sender, object e)
+        {
+            Timer.Text = "Timer:" + seconds2 + seconds;
+            seconds++;
+            if (seconds > 9)
+            {
+                seconds2++;
+                seconds = 0;
+            }
+            else if (seconds2 > 5)
+            {
+                seconds2 = 0;
+                seconds = 0;
+            }
+
+            // save the session variable to keep track of seconds while application is closed or on another page
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+            Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["TimerSave"] = Timer.Text;
+            roamingSettings.Values["seconds"] = seconds;
+            roamingSettings.Values["seconds2"] = seconds2;
+            roamingSettings.Values["minute"] = minute;
+        }
+
+        // NAME     :   Timer_Loaded()
+        // PURPOSE  :   Setup the dispatch timer when loaded and hide to stop button
+        private void Timer_Load(object sender, RoutedEventArgs e)
+        {
+            DispatcherTimerSetup();
+            dispatcherTimer.Start();
+        }
+
+        private void AButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+               Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["AButton"] = "";
+        }
+
+        private void BButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+               Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["BButton"] = "";
+        }
+
+        private void CButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+               Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["CButton"] = "";
+        }
+
+        private void DButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+               Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["DButton"] = "";
+        }
+
+        
 
 
     }
