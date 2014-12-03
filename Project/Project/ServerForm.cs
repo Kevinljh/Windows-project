@@ -18,7 +18,6 @@ namespace Project
         public ShowText showTextDelegate;
         public ChangeQuestion changeQuestionDelegate;
         HttpServer server;
-        GameEngine game;
 
         Thread gameThread;
 
@@ -28,13 +27,13 @@ namespace Project
             showTextDelegate = new ShowText(ShowTextMethod);
             changeQuestionDelegate = new ChangeQuestion(ChangeQuestionMethod);
             server = new HttpServer(this);
-            game = new GameEngine(this);
+            
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            server.Start();
-            gameThread = new Thread(new ThreadStart(game.SwitchQuestions));          
+            gameThread = new Thread(new ThreadStart(server.GameStart));
+            gameThread.Start();
         }
 
         private void StopBtn_Click(object sender, EventArgs e)
@@ -51,6 +50,11 @@ namespace Project
         {
             TestLable.ForeColor = foreColor;
             TestLable.Text = text;
+        }
+
+        private void ListenBtn_Click(object sender, EventArgs e)
+        {
+            server.Start();
         }
     }
 }
