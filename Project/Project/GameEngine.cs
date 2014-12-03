@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Drawing;
 
@@ -11,6 +12,7 @@ namespace Project
     {
         ServerForm myFormContrl;
         List<QuestionRepository> myQuestionRespository;
+        Random rnd = new Random();
         //signal r
         //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
         public GameEngine(ServerForm myForm)
@@ -22,13 +24,14 @@ namespace Project
 
         public void SwitchQuestions()
         {
-            Random rnd = new Random();
+
             int rndNum = rnd.Next(4);
             Color tempColor = myQuestionRespository[rndNum].GetForeColor();
             string tempString = myQuestionRespository[rndNum].GetText();
 
-            myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });
+            myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });   
         }
+
 
         private void GenerateQuestionRepository()
         {

@@ -20,6 +20,7 @@ namespace Project
         private readonly ManualResetEvent stop;
         private readonly AutoResetEvent listenForNextRequest = new AutoResetEvent(false);
         ServerForm myFormContrl;
+        GameEngine game;
 
         public HttpServer(ServerForm myForm)
         {
@@ -27,6 +28,7 @@ namespace Project
             listenerThread = new Thread(HandleRequests);
             stop = new ManualResetEvent(false);
             myFormContrl = myForm;
+            game = new GameEngine(myFormContrl);
         }
 
         public void Start()
@@ -35,7 +37,7 @@ namespace Project
             {
                 if(!listener.IsListening)
                 {
-                    listener.Prefixes.Add("http://10.113.21.41:8081/");
+                    listener.Prefixes.Add("http://10.113.21.30:8081/");
                     listener.Start();
                     listenerThread.Start();
                 }
@@ -118,8 +120,8 @@ namespace Project
         }
 
         public void Dispose()
-        {  
-            
+        {
+            Stop();
         }
 
         public void Stop()
@@ -138,6 +140,15 @@ namespace Project
                 byte[] buffer = Encoding.UTF8.GetBytes(responseString);
                 response.ContentLength64 = buffer.LongLength;
                 response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+        }
+
+        public void GameStart()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                game.SwitchQuestions();
+                Thread.Sleep(500);
             }
         }
     }
