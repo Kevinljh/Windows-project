@@ -45,10 +45,11 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Background" />
       <RootProperty Name="BorderBrush" />
+      <RootProperty Name="Background" />
       <RootProperty Name="Command" />
       <RootProperty Name="Style" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="HorizontalAlignment" />
