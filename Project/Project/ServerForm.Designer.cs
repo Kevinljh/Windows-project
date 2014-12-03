@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerForm));
             this.ALabel = new System.Windows.Forms.Label();
             this.BLabel = new System.Windows.Forms.Label();
             this.DLabel = new System.Windows.Forms.Label();
@@ -37,6 +38,11 @@
             this.BTextBox = new System.Windows.Forms.TextBox();
             this.DTextBox = new System.Windows.Forms.TextBox();
             this.MainTextBox = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.StartBtn = new System.Windows.Forms.ToolStripButton();
+            this.StopBtn = new System.Windows.Forms.ToolStripButton();
+            this.TestLable = new System.Windows.Forms.Label();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ALabel
@@ -125,11 +131,55 @@
             this.MainTextBox.Size = new System.Drawing.Size(897, 212);
             this.MainTextBox.TabIndex = 8;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StartBtn,
+            this.StopBtn});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 482);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(921, 25);
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // StartBtn
+            // 
+            this.StartBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.StartBtn.Image = ((System.Drawing.Image)(resources.GetObject("StartBtn.Image")));
+            this.StartBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StartBtn.Name = "StartBtn";
+            this.StartBtn.Size = new System.Drawing.Size(35, 22);
+            this.StartBtn.Text = "Start";
+            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
+            // 
+            // StopBtn
+            // 
+            this.StopBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.StopBtn.Image = ((System.Drawing.Image)(resources.GetObject("StopBtn.Image")));
+            this.StopBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StopBtn.Name = "StopBtn";
+            this.StopBtn.Size = new System.Drawing.Size(35, 22);
+            this.StopBtn.Text = "Stop";
+            this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
+            // 
+            // TestLable
+            // 
+            this.TestLable.AutoSize = true;
+            this.TestLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLable.Location = new System.Drawing.Point(42, 440);
+            this.TestLable.Name = "TestLable";
+            this.TestLable.Size = new System.Drawing.Size(68, 31);
+            this.TestLable.TabIndex = 10;
+            this.TestLable.Text = "Test";
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 457);
+            this.ClientSize = new System.Drawing.Size(921, 507);
+            this.Controls.Add(this.TestLable);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainTextBox);
             this.Controls.Add(this.DTextBox);
             this.Controls.Add(this.BTextBox);
@@ -141,6 +191,8 @@
             this.Controls.Add(this.ALabel);
             this.Name = "ServerForm";
             this.Text = "Server";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,6 +209,10 @@
         private System.Windows.Forms.TextBox BTextBox;
         private System.Windows.Forms.TextBox DTextBox;
         private System.Windows.Forms.TextBox MainTextBox;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton StartBtn;
+        private System.Windows.Forms.ToolStripButton StopBtn;
+        private System.Windows.Forms.Label TestLable;
 
     }
 }
