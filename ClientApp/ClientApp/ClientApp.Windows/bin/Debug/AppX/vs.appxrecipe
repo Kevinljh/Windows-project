@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MICHAEL</Machine>
+    <WindowsUser>User1</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>75a5886d-98d4-4c57-b9fb-f924e0ae6969</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>4BC2B83CC5160B7B95CE01B35A04E1B9D32039F05096676CF8E0D8049B4CF4F9</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>75a5886d-98d4-4c57-b9fb-f924e0ae6969_1.0.0.0_neutral__ewg86emg74g8m</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>75a5886d-98d4-4c57-b9fb-f924e0ae6969_ewg86emg74g8m!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>75a5886d-98d4-4c57-b9fb-f924e0ae6969</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=User1</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-12-02T22:55:23.499</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.exe">
+      <PackagePath>ClientApp.Windows.exe</PackagePath>
+      <Modified>2014-12-03T01:05:24.135</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T14:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T14:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T14:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-03-14T14:55:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-12-02T22:55:23.050</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2014-12-03T01:05:23.927</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.xr.xml">
+      <PackagePath>ClientApp.Windows.xr.xml</PackagePath>
+      <Modified>2014-12-03T01:05:23.883</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\User1\Desktop\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-12-02T22:55:23.359</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
