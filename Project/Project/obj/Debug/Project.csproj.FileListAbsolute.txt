@@ -16,3 +16,12 @@ C:\Users\Jli1-cc\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Projec
 C:\Users\Jli1-cc\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
 C:\Users\Jli1-cc\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe
 C:\Users\Jli1-cc\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.pdb
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe.config
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.exe
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.pdb
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.exe
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\Project.pdb
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.ServerForm.resources
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
