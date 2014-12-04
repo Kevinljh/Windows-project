@@ -13,6 +13,7 @@ namespace Project
         ServerForm myFormContrl;
         List<QuestionRepository> myQuestionRespository;
         Random rnd = new Random();
+        public bool result;
         //signal r
         //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
         public GameEngine(ServerForm myForm)
@@ -24,12 +25,17 @@ namespace Project
 
         public void SwitchQuestions()
         {
-
-            int rndNum = rnd.Next(4);
-            Color tempColor = myQuestionRespository[rndNum].GetForeColor();
-            string tempString = myQuestionRespository[rndNum].GetText();
-
-            myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });   
+            int rndNum;
+            for (int i = 0; i < 50; i++)
+            {
+                rndNum = rnd.Next(4);
+                Color tempColor = myQuestionRespository[rndNum].GetForeColor();
+                string tempString = myQuestionRespository[rndNum].GetText();
+                result = myQuestionRespository[rndNum].GetAnswer();
+                //invoke ui
+                myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });
+                Thread.Sleep(1000);
+            }
         }
 
 

@@ -37,7 +37,8 @@ namespace Project
             {
                 if(!listener.IsListening)
                 {
-                    listener.Prefixes.Add("http://10.113.21.30:8081/");
+
+                    listener.Prefixes.Add("http://10.113.21.154:8091/");                    
                     listener.Start();
                     listenerThread.Start();
                 }
@@ -102,8 +103,16 @@ namespace Project
         {
             HttpListenerRequest request = context.Request;
             string requestDate = GetRequestString(request);
+            if(requestDate == game.result.ToString().ToLower())
+            {
+                WriteResponse(context, "t");
+            }
+            else
+            {
+                WriteResponse(context, "f");
+            }
             myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
-            WriteResponse(context, "Hi there");
+            //WriteResponse(context, "Hi there");
         }
 
         private string GetRequestString(HttpListenerRequest request)
@@ -145,11 +154,11 @@ namespace Project
 
         public void GameStart()
         {
-            for (int i = 0; i < 10; i++)
-            {
+            //for (int i = 0; i < 10; i++)
+            //{
                 game.SwitchQuestions();
-                Thread.Sleep(500);
-            }
+                //Thread.Sleep(500);
+            //}
         }
     }
 }
