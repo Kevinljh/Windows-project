@@ -142,7 +142,7 @@ namespace ClientApp
         // PURPOSE  :   Acts as the clock, every second/tick, 1 is added to the seconds
         void dispatcherTimer_Tick(object sender, object e)
         {
-            Timer.Text = "Timer:  " + minute + ":" + seconds2 + seconds;
+            Timer.Text = "Timer:" + seconds2 + seconds;
             seconds++;
             if (seconds > 9)
             {
@@ -151,7 +151,6 @@ namespace ClientApp
             }
             else if (seconds2 > 5)
             {
-                minute++;
                 seconds2 = 0;
                 seconds = 0;
             }
@@ -165,9 +164,12 @@ namespace ClientApp
             roamingSettings.Values["minute"] = minute;
         }
 
+        // NAME     :   Timer_Loaded()
+        // PURPOSE  :   Setup the dispatch timer when loaded and hide to stop button
         private void Timer_Load(object sender, RoutedEventArgs e)
         {
-
+            DispatcherTimerSetup();
+            dispatcherTimer.Start();
         }
 
         private void AButton_Click(object sender, RoutedEventArgs e)
