@@ -50,7 +50,7 @@
         <Button x:ConnectionId='2' Content="B" HorizontalAlignment="Left" Margin="418,177,0,0" VerticalAlignment="Top" Height="180" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76"                      />
         <Button x:ConnectionId='3' Content="C" HorizontalAlignment="Left" Margin="730,177,0,0" VerticalAlignment="Top" Height="180" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76"                      />
         <Button x:ConnectionId='4' Content="D" HorizontalAlignment="Left" Margin="1054,177,0,0" VerticalAlignment="Top" Height="180" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76"                      />
-        <TextBlock x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Timer" VerticalAlignment="Top" Height="70" Width="188" FontSize="48"/>
+        <TextBlock x:ConnectionId='5' x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Timer" VerticalAlignment="Top" Height="70" Width="188" FontSize="48"                    />
         <TextBlock HorizontalAlignment="Left" Margin="155,437,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="476,437,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="801,444,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
