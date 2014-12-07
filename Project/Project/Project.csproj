@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -45,8 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="CategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryForm.Designer.cs">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBAccessor.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="HttpServer.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="Question.cs" />
     <Compile Include="ServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +67,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CategoryForm.resx">
+      <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServerForm.resx">
       <DependentUpon>ServerForm.cs</DependentUpon>
     </EmbeddedResource>

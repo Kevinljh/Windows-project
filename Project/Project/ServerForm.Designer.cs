@@ -41,8 +41,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StartBtn = new System.Windows.Forms.ToolStripButton();
             this.StopBtn = new System.Windows.Forms.ToolStripButton();
-            this.TestLable = new System.Windows.Forms.Label();
             this.ListenBtn = new System.Windows.Forms.ToolStripButton();
+            this.TestLable = new System.Windows.Forms.Label();
+            this.SettingStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +139,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartBtn,
             this.StopBtn,
-            this.ListenBtn});
+            this.ListenBtn,
+            this.SettingStripLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 482);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(921, 25);
@@ -165,6 +167,16 @@
             this.StopBtn.Text = "Stop";
             this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
+            // ListenBtn
+            // 
+            this.ListenBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ListenBtn.Image = ((System.Drawing.Image)(resources.GetObject("ListenBtn.Image")));
+            this.ListenBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ListenBtn.Name = "ListenBtn";
+            this.ListenBtn.Size = new System.Drawing.Size(42, 22);
+            this.ListenBtn.Text = "Listen";
+            this.ListenBtn.Click += new System.EventHandler(this.ListenBtn_Click);
+            // 
             // TestLable
             // 
             this.TestLable.AutoSize = true;
@@ -175,15 +187,12 @@
             this.TestLable.TabIndex = 10;
             this.TestLable.Text = "Test";
             // 
-            // ListenBtn
+            // SettingStripLabel
             // 
-            this.ListenBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ListenBtn.Image = ((System.Drawing.Image)(resources.GetObject("ListenBtn.Image")));
-            this.ListenBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ListenBtn.Name = "ListenBtn";
-            this.ListenBtn.Size = new System.Drawing.Size(42, 22);
-            this.ListenBtn.Text = "Listen";
-            this.ListenBtn.Click += new System.EventHandler(this.ListenBtn_Click);
+            this.SettingStripLabel.Name = "SettingStripLabel";
+            this.SettingStripLabel.Size = new System.Drawing.Size(44, 22);
+            this.SettingStripLabel.Text = "Setting";
+            this.SettingStripLabel.Click += new System.EventHandler(this.SettingStripLabel_Click);
             // 
             // ServerForm
             // 
@@ -226,6 +235,7 @@
         private System.Windows.Forms.ToolStripButton StopBtn;
         private System.Windows.Forms.Label TestLable;
         private System.Windows.Forms.ToolStripButton ListenBtn;
+        private System.Windows.Forms.ToolStripLabel SettingStripLabel;
 
     }
 }

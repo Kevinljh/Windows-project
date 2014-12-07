@@ -56,5 +56,13 @@ namespace Project
         {
             server.Start();
         }
+
+        private void SettingStripLabel_Click(object sender, EventArgs e)
+        {
+            Form settingForm = new SettingForm();
+            settingForm.Show();
+            this.Hide(); 
+
+        }
     }
 }
