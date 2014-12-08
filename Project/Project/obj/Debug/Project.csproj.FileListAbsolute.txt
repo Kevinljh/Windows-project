@@ -25,3 +25,4 @@ C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Proje
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.ServerForm.resources
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.Properties.Resources.resources
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.SettingForm.resources

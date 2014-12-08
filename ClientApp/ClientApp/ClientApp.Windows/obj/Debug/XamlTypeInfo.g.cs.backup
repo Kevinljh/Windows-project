@@ -124,7 +124,7 @@ namespace ClientApp.ClientApp_Windows_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[8];
+            _typeNameTable = new string[9];
             _typeNameTable[0] = "ClientApp.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -133,8 +133,9 @@ namespace ClientApp.ClientApp_Windows_XamlTypeInfo
             _typeNameTable[5] = "String";
             _typeNameTable[6] = "ClientApp.Common.NavigationHelper";
             _typeNameTable[7] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[8] = "ClientApp.RegisterPage";
 
-            _typeTable = new global::System.Type[8];
+            _typeTable = new global::System.Type[9];
             _typeTable[0] = typeof(global::ClientApp.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -143,6 +144,7 @@ namespace ClientApp.ClientApp_Windows_XamlTypeInfo
             _typeTable[5] = typeof(global::System.String);
             _typeTable[6] = typeof(global::ClientApp.Common.NavigationHelper);
             _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[8] = typeof(global::ClientApp.RegisterPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,6 +181,7 @@ namespace ClientApp.ClientApp_Windows_XamlTypeInfo
 
         private object Activate_0_MainPage() { return new global::ClientApp.MainPage(); }
         private object Activate_3_ObservableDictionary() { return new global::ClientApp.Common.ObservableDictionary(); }
+        private object Activate_8_RegisterPage() { return new global::ClientApp.RegisterPage(); }
         private void MapAdd_3_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
@@ -239,6 +242,13 @@ namespace ClientApp.ClientApp_Windows_XamlTypeInfo
 
             case 7:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::ClientApp.ClientApp_Windows_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  ClientApp.RegisterPage
+                userType = new global::ClientApp.ClientApp_Windows_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_8_RegisterPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;

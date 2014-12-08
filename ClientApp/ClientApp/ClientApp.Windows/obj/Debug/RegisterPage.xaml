@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="ClientApp.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="ServerIPTB" HorizontalAlignment="Left" Margin="620,244,0,0" TextWrapping="Wrap" Text="10.113.21.154:8081" VerticalAlignment="Top" Width="363" FontSize="24"/>
+        <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="620,380,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="363" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="419,259,0,0" TextWrapping="Wrap" Text="Server IP" VerticalAlignment="Top" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="437,395,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="24"/>
+        <Button x:ConnectionId='1' x:Name="LogInBtn" Content="Button" HorizontalAlignment="Left" Margin="600,546,0,0" VerticalAlignment="Top" FontSize="24"                       />
+
+    </Grid>
+</Page>
+

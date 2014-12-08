@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +34,7 @@ namespace Project
                 result = myQuestionRespository[rndNum].GetAnswer();
                 //invoke ui
                 myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
         }
 

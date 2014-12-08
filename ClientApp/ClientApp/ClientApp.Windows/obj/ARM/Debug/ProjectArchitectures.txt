@@ -1,0 +1,1 @@
+C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\ClientApp.Windows.csproj;arm

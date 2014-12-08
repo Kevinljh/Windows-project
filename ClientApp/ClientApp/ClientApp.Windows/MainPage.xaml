@@ -55,6 +55,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="476,437,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="801,444,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="1118,444,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="24"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="70" Width="188" FontSize="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
+        <TextBlock x:Name="ScoreTb" Text="{Binding Path=scoreProperty}" HorizontalAlignment="Left" Margin="155,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
     </Grid>
 </Page>
