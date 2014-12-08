@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.ComponentModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -33,6 +34,7 @@ namespace ClientApp
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        MyHttpClient client;
         /// <summary>
         /// This can be changed to a strongly typed view model.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ClientApp
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
-            this.navigationHelper.SaveState += navigationHelper_SaveState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;          
         }
 
         /// <summary>
@@ -91,6 +93,8 @@ namespace ClientApp
                 // Abutton = (int)roamingSettings.Values["Abutton"];
             }
 
+            client = e.NavigationParameter as MyHttpClient;
+            ScoreTb.DataContext = client;
         }
 
         /// <summary>
@@ -177,6 +181,7 @@ namespace ClientApp
             Windows.Storage.ApplicationDataContainer roamingSettings =
                Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["AButton"] = "";
+            client.sendAnwser("a");
         }
 
         private void BButton_Click(object sender, RoutedEventArgs e)
@@ -184,6 +189,7 @@ namespace ClientApp
             Windows.Storage.ApplicationDataContainer roamingSettings =
                Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["BButton"] = "";
+            client.sendAnwser("b");
         }
 
         private void CButton_Click(object sender, RoutedEventArgs e)
@@ -191,13 +197,15 @@ namespace ClientApp
             Windows.Storage.ApplicationDataContainer roamingSettings =
                Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["CButton"] = "";
+            client.sendAnwser("c");
         }
 
         private void DButton_Click(object sender, RoutedEventArgs e)
         {
             Windows.Storage.ApplicationDataContainer roamingSettings =
                Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["DButton"] = "";
+            roamingSettings.Values["DButton"] = ""; 
+            client.sendAnwser("d");
         }
 
         

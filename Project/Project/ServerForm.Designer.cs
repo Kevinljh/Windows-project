@@ -41,9 +41,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StartBtn = new System.Windows.Forms.ToolStripButton();
             this.StopBtn = new System.Windows.Forms.ToolStripButton();
-            this.TestLable = new System.Windows.Forms.Label();
             this.ListenBtn = new System.Windows.Forms.ToolStripButton();
+            this.TestLable = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.IPAdressLB = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ALabel
@@ -134,12 +137,11 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartBtn,
             this.StopBtn,
             this.ListenBtn});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 482);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(921, 25);
             this.toolStrip1.TabIndex = 9;
@@ -165,16 +167,6 @@
             this.StopBtn.Text = "Stop";
             this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
-            // TestLable
-            // 
-            this.TestLable.AutoSize = true;
-            this.TestLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TestLable.Location = new System.Drawing.Point(42, 440);
-            this.TestLable.Name = "TestLable";
-            this.TestLable.Size = new System.Drawing.Size(68, 31);
-            this.TestLable.TabIndex = 10;
-            this.TestLable.Text = "Test";
-            // 
             // ListenBtn
             // 
             this.ListenBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -185,11 +177,38 @@
             this.ListenBtn.Text = "Listen";
             this.ListenBtn.Click += new System.EventHandler(this.ListenBtn_Click);
             // 
+            // TestLable
+            // 
+            this.TestLable.AutoSize = true;
+            this.TestLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLable.Location = new System.Drawing.Point(42, 440);
+            this.TestLable.Name = "TestLable";
+            this.TestLable.Size = new System.Drawing.Size(68, 31);
+            this.TestLable.TabIndex = 10;
+            this.TestLable.Text = "Test";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.IPAdressLB});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 485);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(921, 22);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // IPAdressLB
+            // 
+            this.IPAdressLB.Name = "IPAdressLB";
+            this.IPAdressLB.Size = new System.Drawing.Size(20, 17);
+            this.IPAdressLB.Text = "IP:";
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 507);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.TestLable);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainTextBox);
@@ -205,6 +224,8 @@
             this.Text = "Server";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +247,8 @@
         private System.Windows.Forms.ToolStripButton StopBtn;
         private System.Windows.Forms.Label TestLable;
         private System.Windows.Forms.ToolStripButton ListenBtn;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel IPAdressLB;
 
     }
 }

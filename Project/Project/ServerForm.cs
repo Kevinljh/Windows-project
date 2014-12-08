@@ -27,13 +27,16 @@ namespace Project
             showTextDelegate = new ShowText(ShowTextMethod);
             changeQuestionDelegate = new ChangeQuestion(ChangeQuestionMethod);
             server = new HttpServer(this);
-            
+            IPAdressLB.Text = "IP:" + server.LocalIPAddress().TrimEnd('/');
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            gameThread = new Thread(new ThreadStart(server.GameStart));
-            gameThread.Start();
+            if (!server.gameIsRuning)
+            {
+                gameThread = new Thread(new ThreadStart(server.GameStart));
+                gameThread.Start();
+            }
         }
 
         private void StopBtn_Click(object sender, EventArgs e)
@@ -44,14 +47,14 @@ namespace Project
 
         public void ShowTextMethod(string myString)
         {
-            MainTextBox.Text = MainTextBox.Text + "\n" + myString;
+            //MainTextBox.Text = MainTextBox.Text + "\n" + myString;
+            MainTextBox.Text = myString;
         }
         public void ChangeQuestionMethod(Color foreColor, string text)
         {
             TestLable.ForeColor = foreColor;
             TestLable.Text = text;
         }
-
         private void ListenBtn_Click(object sender, EventArgs e)
         {
             server.Start();
