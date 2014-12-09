@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Windows.UI.Xaml;
 using System.ComponentModel;
+using System.Net;
 
 namespace ClientApp
 {
@@ -54,6 +55,12 @@ namespace ClientApp
             postData.Add(new KeyValuePair<string, string>("myName", myName));
             requestContent = new FormUrlEncodedContent(postData);
             sendRequest();
+
+            postData.Clear();
+            postData.Add(new KeyValuePair<string, string>("myTask", "ready"));
+            postData.Add(new KeyValuePair<string, string>("myName", myName));
+            requestContent = new FormUrlEncodedContent(postData);
+            sendRequest();
         }
 
         public void sendAnwser(string answer)
@@ -61,7 +68,7 @@ namespace ClientApp
             postData.Clear();
             postData.Add(new KeyValuePair<string, string>("myTask", "answer"));
             postData.Add(new KeyValuePair<string, string>("myName", myName));
-            postData.Add(new KeyValuePair<string, string>("answer", answer));
+            postData.Add(new KeyValuePair<string, string>("myAnswer", answer));
             requestContent = new FormUrlEncodedContent(postData);
             sendRequest();
         }
@@ -69,8 +76,10 @@ namespace ClientApp
         public async void sendRequest()
         {
             myResponseMsg = await base.PostAsync(serverUrl, requestContent);
+            //wait for respose
             string content = await myResponseMsg.Content.ReadAsStringAsync();
             dealResponseContent(content);
+            
         }
 
         private void dealResponseContent(string content)
@@ -78,6 +87,16 @@ namespace ClientApp
             //get return t/f(true/false) from server
             //increse score
             if (content == "t")
+            {
+                scoreCounter++;
+                scoreProperty = scoreCounter.ToString();
+            }
+            if (content == "go")
+            {
+                scoreCounter++;
+                scoreProperty = scoreCounter.ToString();
+            }
+            if (content == "welcome")
             {
                 scoreCounter++;
                 scoreProperty = scoreCounter.ToString();

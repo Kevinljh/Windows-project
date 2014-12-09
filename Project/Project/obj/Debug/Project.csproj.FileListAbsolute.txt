@@ -26,3 +26,4 @@ C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Proje
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.Properties.Resources.resources
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.csproj.GenerateResource.Cache
 C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\obj\Debug\Project.SettingForm.resources
+C:\Users\Students\Desktop\GitHub\Windows-project\Project\Project\bin\Debug\MySql.Data.Entity.EF5.dll

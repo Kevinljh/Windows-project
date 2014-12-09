@@ -12,7 +12,7 @@
         <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="620,380,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="363" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="419,259,0,0" TextWrapping="Wrap" Text="Server IP" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="437,395,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="24"/>
-        <Button x:ConnectionId='1' x:Name="LogInBtn" Content="Button" HorizontalAlignment="Left" Margin="600,546,0,0" VerticalAlignment="Top" FontSize="24"                       />
+        <Button x:ConnectionId='1' x:Name="LogInBtn" Content="Log In" HorizontalAlignment="Left" Margin="600,546,0,0" VerticalAlignment="Top" FontSize="24"                       />
 
     </Grid>
 </Page>

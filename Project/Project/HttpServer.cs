@@ -24,7 +24,13 @@ namespace Project
         ServerForm myFormContrl;
         GameEngine game;
         public bool gameIsRuning = false;
-        List<KeyValuePair<string, HttpListenerContext>> myClientList;
+        List<Client> myClientList;
+        public struct Client
+        {
+            public string name;
+            public HttpListenerContext context;
+            public int score;
+        }
 
         public HttpServer(ServerForm myForm)
         {
@@ -34,7 +40,7 @@ namespace Project
             myFormContrl = myForm;
             game = new GameEngine(myFormContrl);
             serverUrl = LocalIPAddress();
-            myClientList = new List<KeyValuePair<string, HttpListenerContext>>();
+            myClientList = new List<Client>();
         }
 
         public void Start()
@@ -107,30 +113,34 @@ namespace Project
         {
             HttpListenerRequest request = context.Request;
             string requestDate = GetRequestString(request);
+            string clientRequestTask = ExtractTaskMessage(requestDate, "myTask");
             string clientName = ExtractTaskMessage(requestDate, "myName");
 
-            if (requestDate.Contains("logIn"))
-            {
-                
+            if (clientRequestTask == "logIn")
+            {               
                 bool isClientExist = FindClient(clientName);
                 if(isClientExist)
                 {
-                    WriteResponse(context, "client already existed");
+                    WriteResponse(context, "welcome");
+                    //WriteResponse(context, "client already existed");
                 }
                 else
                 {
                     WriteResponse(context, "welcome");
                 }
             }
-            else if (requestDate.Contains("ready"))
+            else if (clientRequestTask == "ready")
             {
-                clientName = ExtractTaskMessage(requestDate, "myName");
+                //client ready wait for game to start
                 AddClient(context, clientName);
+                Thread.Sleep(5000);
+                WriteResponse(context, "go");
             }
-            else if (requestDate.Contains("answer"))
+            else if (clientRequestTask == "answer")
             {
-                string answer = ExtractTaskMessage(requestDate, "answer");
+                string answer = ExtractTaskMessage(requestDate, "myAnswer");
 
+                //respose result
                 if (answer == game.result.ToString())
                 {
                     WriteResponse(context, "t");
@@ -187,6 +197,14 @@ namespace Project
             gameIsRuning = false;
         }
 
+        private void NotifyClientStartGame()
+        {
+            foreach(Client c in myClientList)
+            {
+                WriteResponse(c.context, "start");
+            }
+        }
+
         public string LocalIPAddress()
         {
             IPHostEntry host;
@@ -227,9 +245,9 @@ namespace Project
         {
             bool exist = false;
 
-            foreach (KeyValuePair<string, HttpListenerContext> kvp in myClientList)
+            foreach (Client kvp in myClientList)
             { 
-                if(kvp.Key == clientName)
+                if(kvp.name == clientName)
                 {
                     exist = true;
                 }
@@ -240,12 +258,16 @@ namespace Project
 
         private void AddClient(HttpListenerContext context, string clientName)
         {
-            myClientList.Add(new KeyValuePair<string, HttpListenerContext>(clientName, context));           
+            Client temp = new Client();
+            temp.name =clientName;
+            temp.context = context;
+            temp.score = 0;
+            myClientList.Add(temp);           
         }
 
         private void DeleteClient(string clientName)
         {
-
+            myClientList.Clear();
         }
     }
 }

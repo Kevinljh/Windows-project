@@ -8,7 +8,7 @@
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>75a5886d-98d4-4c57-b9fb-f924e0ae6969</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\obj\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>61BA77E027D39F950591A9DF7F933BDD0A4CE62C2A42C6334BE4FD1020F263B9</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>FD629EC0EBEF85310DECBB3C61A24D33903504ACEDCA6ACD2925250A04D5B075</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>75a5886d-98d4-4c57-b9fb-f924e0ae6969_1.0.0.0_neutral__ewg86emg74g8m</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>75a5886d-98d4-4c57-b9fb-f924e0ae6969_ewg86emg74g8m!App</RegisteredUserModeAppID>
     <RegisteredPackageID>75a5886d-98d4-4c57-b9fb-f924e0ae6969</RegisteredPackageID>
@@ -20,53 +20,53 @@
     <AppXManifest Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-08T03:40:28.801</Modified>
+      <Modified>2014-12-09T04:15:24.983</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.exe">
       <PackagePath>ClientApp.Windows.exe</PackagePath>
-      <Modified>2014-12-08T03:40:28.630</Modified>
+      <Modified>2014-12-09T04:23:03.474</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-04T19:04:06.449</Modified>
+      <Modified>2014-12-08T22:41:58.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-04T19:04:06.450</Modified>
+      <Modified>2014-12-08T22:41:58.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-04T19:04:06.450</Modified>
+      <Modified>2014-12-08T22:41:58.548</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-04T19:04:06.452</Modified>
+      <Modified>2014-12-08T22:41:58.917</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2014-12-07T19:03:54.759</Modified>
+      <Modified>2014-12-09T04:15:24.444</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-12-08T03:39:22.251</Modified>
+      <Modified>2014-12-09T04:15:24.446</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\RegisterPage.xbf">
       <PackagePath>RegisterPage.xbf</PackagePath>
-      <Modified>2014-12-08T00:26:52.140</Modified>
+      <Modified>2014-12-09T04:15:24.448</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.xr.xml">
       <PackagePath>ClientApp.Windows.xr.xml</PackagePath>
-      <Modified>2014-12-08T01:36:58.012</Modified>
+      <Modified>2014-12-09T03:13:13.748</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-12-08T03:40:28.699</Modified>
+      <Modified>2014-12-09T04:15:24.785</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

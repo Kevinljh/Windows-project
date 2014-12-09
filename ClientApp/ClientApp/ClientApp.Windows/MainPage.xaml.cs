@@ -244,7 +244,6 @@ namespace ClientApp
         {
             QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +
             "A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
- 
         }
 
         

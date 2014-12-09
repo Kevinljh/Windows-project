@@ -42,7 +42,7 @@ namespace ClientApp
         // PURPOSE  :   Takes users input from textboxs and sends HTTP request to server to connect with.
         private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
-            client = new MyHttpClient(ServerIPTB.Text, NameTB.Text);
+            client = new MyHttpClient(ServerIPTB.Text, NameTB.Text);           
             client.logInRequest();
             Frame.Navigate(typeof(MainPage), client);
         }
