@@ -1,4 +1,13 @@
-﻿using ClientApp.Common;
+﻿/*
+* FILE          : MainPage.xaml.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This file contains the Client UI for windows tablets,
+*  this is the users interface for the Brain Game.
+*/
+
+using ClientApp.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,10 +35,9 @@ namespace ClientApp
     {
 
         DispatcherTimer dispatcherTimer;
-        int GameState = 0;
+        
         int seconds2 = 0;
         int seconds = 0;
-        int minute = 0;
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -165,7 +173,7 @@ namespace ClientApp
             roamingSettings.Values["TimerSave"] = Timer.Text;
             roamingSettings.Values["seconds"] = seconds;
             roamingSettings.Values["seconds2"] = seconds2;
-            roamingSettings.Values["minute"] = minute;
+            
         }
 
         // NAME     :   Timer_Loaded()
@@ -174,38 +182,69 @@ namespace ClientApp
         {
             DispatcherTimerSetup();
             dispatcherTimer.Start();
+            
+        }
+        // NAME     :   TimerStart()
+        // PURPOSE  :   Function To start the dispatcherTimer
+        private void TimerStart()
+        {
+            dispatcherTimer.Start();
         }
 
+        // NAME     :   TimerStop()
+        // PURPOSE  :   Function To Stop the dispatcherTimer
+        private void TimerStop()
+        {
+            dispatcherTimer.Stop();
+        }
+
+        // NAME     :   TimerReset()
+        // PURPOSE  :   Function To Reset the dispatcherTimer to 00
+        private void TimerReset()
+        {
+            seconds = 0;
+            seconds2 = 0;
+            Windows.Storage.ApplicationDataContainer roamingSettings =
+            Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["seconds"] = 0;
+            roamingSettings.Values["seconds2"] = 0;
+        }
+
+        // NAME     :   AButton_Click()
+        // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
         private void AButton_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["AButton"] = "";
-            client.sendAnwser("a");
+        {      
+            client.sendAnwser("a");          
         }
 
+        // NAME     :   BButton_Click()
+        // PURPOSE  :   When Button "b" is pressed the client will send that user pressed "b"
         private void BButton_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["BButton"] = "";
+        {     
             client.sendAnwser("b");
         }
 
+        // NAME     :   CButton_Click()
+        // PURPOSE  :   When Button "c" is pressed the client will send that user pressed "c"
         private void CButton_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["CButton"] = "";
+        {  
             client.sendAnwser("c");
         }
 
+        // NAME     :   DButton_Click()
+        // PURPOSE  :   When Button "d" is pressed the client will send that user pressed "d"
         private void DButton_Click(object sender, RoutedEventArgs e)
         {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["DButton"] = ""; 
             client.sendAnwser("d");
+        }
+
+        // NAME     :   QuestionPlaceHolder_Loaded()
+        // PURPOSE  :   Load Question into QuestionPlaceHolder TextBlock
+        private void QuestionPlaceHolder_Loaded(object sender, RoutedEventArgs e)
+        {
+            QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +
+            "A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
+ 
         }
 
         

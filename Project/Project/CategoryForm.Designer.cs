@@ -38,10 +38,10 @@
             this.categorycomboBox = new System.Windows.Forms.ComboBox();
             this.categorylabel = new System.Windows.Forms.Label();
             this.Option = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.QuestionComboBox = new System.Windows.Forms.ComboBox();
-            this.optionGridView = new System.Windows.Forms.DataGridView();
             this.OptionSavebutton = new System.Windows.Forms.Button();
+            this.optionGridView = new System.Windows.Forms.DataGridView();
+            this.QuestionComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.Setting.SuspendLayout();
             this.Category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridView)).BeginInit();
@@ -156,32 +156,6 @@
             this.Option.Text = "Edit Option";
             this.Option.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please Select One Question:";
-            // 
-            // QuestionComboBox
-            // 
-            this.QuestionComboBox.FormattingEnabled = true;
-            this.QuestionComboBox.Location = new System.Drawing.Point(169, 21);
-            this.QuestionComboBox.Name = "QuestionComboBox";
-            this.QuestionComboBox.Size = new System.Drawing.Size(121, 21);
-            this.QuestionComboBox.TabIndex = 1;
-            this.QuestionComboBox.SelectedValueChanged += new System.EventHandler(this.QuestionComboBox_SelectedValueChanged);
-            // 
-            // optionGridView
-            // 
-            this.optionGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.optionGridView.Location = new System.Drawing.Point(22, 72);
-            this.optionGridView.Name = "optionGridView";
-            this.optionGridView.Size = new System.Drawing.Size(598, 355);
-            this.optionGridView.TabIndex = 2;
-            // 
             // OptionSavebutton
             // 
             this.OptionSavebutton.Location = new System.Drawing.Point(255, 457);
@@ -191,6 +165,32 @@
             this.OptionSavebutton.Text = "Submit";
             this.OptionSavebutton.UseVisualStyleBackColor = true;
             this.OptionSavebutton.Click += new System.EventHandler(this.OptionSavebutton_Click);
+            // 
+            // optionGridView
+            // 
+            this.optionGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.optionGridView.Location = new System.Drawing.Point(22, 72);
+            this.optionGridView.Name = "optionGridView";
+            this.optionGridView.Size = new System.Drawing.Size(598, 355);
+            this.optionGridView.TabIndex = 2;
+            // 
+            // QuestionComboBox
+            // 
+            this.QuestionComboBox.FormattingEnabled = true;
+            this.QuestionComboBox.Location = new System.Drawing.Point(169, 21);
+            this.QuestionComboBox.Name = "QuestionComboBox";
+            this.QuestionComboBox.Size = new System.Drawing.Size(451, 21);
+            this.QuestionComboBox.TabIndex = 1;
+            this.QuestionComboBox.SelectedValueChanged += new System.EventHandler(this.QuestionComboBox_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Please Select One Question:";
             // 
             // SettingForm
             // 

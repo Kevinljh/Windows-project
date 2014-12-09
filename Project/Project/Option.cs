@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Option
+   public class Option
     {
         public int ID { set; get; }
         public int QuestionID { set; get; }

@@ -14,7 +14,7 @@ namespace Project
     public partial class ServerForm : Form
     {
         public delegate void ShowText(String myString);
-        public delegate void ChangeQuestion(Color foreColor, string text);
+        public delegate void ChangeQuestion(Question foreColor, List<Option> optionList);
         public ShowText showTextDelegate;
         public ChangeQuestion changeQuestionDelegate;
         HttpServer server;
@@ -50,10 +50,65 @@ namespace Project
             //MainTextBox.Text = MainTextBox.Text + "\n" + myString;
             MainTextBox.Text = myString;
         }
-        public void ChangeQuestionMethod(Color foreColor, string text)
+        public void ChangeQuestionMethodOld(Color foreColor, string text)
         {
             TestLable.ForeColor = foreColor;
             TestLable.Text = text;
+        }
+        public void ChangeQuestionMethod(Question question, List<Option>optionList)
+        {
+            
+            MainTextBox.Text = question.Content;
+
+            foreach (Option option in optionList)
+            {
+                if (option.OptionName.StartsWith("a"))
+                {
+                    if (option.OptionName.IndexOf("a-") >= 0)
+                    {
+                        ATextBox.Text = option.OptionName.Substring(2, option.OptionName.Length-2);
+                    }
+                    else
+                    {
+                        ATextBox.Text = option.OptionName;
+                    }
+                    
+                }
+                else if(option.OptionName.StartsWith("b")) 
+                {
+                    if (option.OptionName.IndexOf("b-") >= 0)
+                    {
+                        BTextBox.Text = option.OptionName.Substring(2, option.OptionName.Length-2);
+                    }
+                    else
+                    {
+                        BTextBox.Text = option.OptionName;
+                    }
+                   
+                }
+                else if(option.OptionName.StartsWith("c"))
+                {
+                    if (option.OptionName.IndexOf("c-") >= 0)
+                    {
+                        CTextBox.Text = option.OptionName.Substring(2, option.OptionName.Length-2);
+                    }
+                    else
+                    {
+                        CTextBox.Text = option.OptionName;
+                    }
+                }
+                else if (option.OptionName.StartsWith("d"))
+                {
+                    if (option.OptionName.IndexOf("d-") >= 0)
+                    {
+                        DTextBox.Text = option.OptionName.Substring(2, option.OptionName.Length-2);
+                    }
+                    else
+                    {
+                        DTextBox.Text = option.OptionName;
+                    }
+                }
+            }
         }
         private void ListenBtn_Click(object sender, EventArgs e)
         {

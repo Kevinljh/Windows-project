@@ -14,6 +14,10 @@ namespace Project
         List<QuestionRepository> myQuestionRespository;
         Random rnd = new Random();
         public bool result;
+        private List<Question> questions;
+        private List<Option> options;
+        private DBAccessor dbAccessor;
+        private int categoryId = 1;
         //signal r
         //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
         public GameEngine(ServerForm myForm)
@@ -21,21 +25,23 @@ namespace Project
             myFormContrl = myForm;
             myQuestionRespository = new List<QuestionRepository>();
             GenerateQuestionRepository();
+            dbAccessor = new DBAccessor();
+            questions = dbAccessor.GetQuestions(categoryId);
+
         }
 
         public void SwitchQuestions()
         {
-            int rndNum;
-            for (int i = 0; i < 50; i++)
+           
+            foreach (Question question in questions)
             {
-                rndNum = rnd.Next(4);
-                Color tempColor = myQuestionRespository[rndNum].GetForeColor();
-                string tempString = myQuestionRespository[rndNum].GetText();
-                result = myQuestionRespository[rndNum].GetAnswer();
-                //invoke ui
-                myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { tempColor, tempString });
+
+                this.options = dbAccessor.GetOptions(question.ID);
+                myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, options });
+
                 Thread.Sleep(3000);
             }
+
         }
 
 
@@ -74,6 +80,8 @@ namespace Project
             myQuestionRespository.Add(q5);
         }
     }
+
+    public 
 
     class QuestionRepository
     {

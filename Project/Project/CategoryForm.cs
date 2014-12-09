@@ -35,7 +35,7 @@ namespace Project
             dsquestions = dbAccessor.GetQuestionDS((int)categorycomboBox.SelectedValue);
             questionGridView.DataSource = dsquestions; 
             questionGridView.DataMember = "Question";
-            dsquestions.Tables["Question"].Columns[3].DefaultValue = categorycomboBox.SelectedValue;
+            dsquestions.Tables["Question"].Columns[4].DefaultValue = categorycomboBox.SelectedValue;
 
             //question combobox
             QuestionComboBox.DataSource = dbAccessor.GetAllQuestions();
@@ -45,7 +45,7 @@ namespace Project
             dsOptions = dbAccessor.GetOptionDS((int)QuestionComboBox.SelectedValue);
             optionGridView.DataSource = dsOptions;
             optionGridView.DataMember = "Options";
-            dsOptions.Tables["Options"].Columns[1].DefaultValue = QuestionComboBox.SelectedValue;
+            dsOptions.Tables["Options"].Columns[2].DefaultValue = QuestionComboBox.SelectedValue;
         }
 
         private void saveCategorybutton_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Project
                 questionGridView.DataSource = dsquestions;
                 questionGridView.DataMember = "Question";
                 questionGridView.Refresh();
-                dsquestions.Tables["Question"].Columns[3].DefaultValue = ((Category)categorycomboBox.SelectedItem).ID;
+                dsquestions.Tables["Question"].Columns[4].DefaultValue = ((Category)categorycomboBox.SelectedItem).ID;
             }
             
         }
@@ -83,7 +83,7 @@ namespace Project
                 optionGridView.DataSource = dsOptions;
                 optionGridView.DataMember = "Options";
                 optionGridView.Refresh();
-                dsOptions.Tables["Options"].Columns[1].DefaultValue = ((Question)QuestionComboBox.SelectedItem).ID;
+                dsOptions.Tables["Options"].Columns[2].DefaultValue = ((Question)QuestionComboBox.SelectedItem).ID;
             }
         }
 
