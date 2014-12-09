@@ -49,7 +49,7 @@ namespace Project
 
         public DataSet GetQuestionDS(int categoryId)
         {
-            string sql = "select content, type, answer, category_Id from question where category_Id =" + categoryId;
+            string sql = "select id, content, type, answer, category_Id from question where category_Id =" + categoryId;
 
             daQuestion = new MySqlDataAdapter(sql, conn); 
             
@@ -82,7 +82,7 @@ namespace Project
 
         public DataSet GetOptionDS(int questionID)
         {
-            string sql = "select option_name, question_Id from `option` where question_id =" + questionID;
+            string sql = "select id, option_name, question_Id from `option` where question_id =" + questionID;
 
             daOption = new MySqlDataAdapter(sql, conn);
 
@@ -373,19 +373,19 @@ namespace Project
         }
 
         public void updateCategory(ref DataSet ds){
-            conn.Open();
+            
             daCategory.Update(ds, "Category");
         }
 
         public void updateQuestion(ref DataSet ds)
         {
-            conn.Open();
+             
             daQuestion.Update(ds, "Question");
         }
 
         public void updateOption(ref DataSet ds)
         {
-            conn.Open();
+            
             daOption.Update(ds, "Options");
         }
 
