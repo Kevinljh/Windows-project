@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Question
+    public class Question
     {
         public int ID { set; get; }
         public string Content { set; get; }

@@ -217,7 +217,8 @@ namespace Project
             {
                 dsQuestion = new DataSet();
             }
-            daQuestion.Fill(dsQuestion);
+            dsQuestion.Clear();
+            daQuestion.Fill(dsQuestion, "Question");
             DataTable dt = dsQuestion.Tables["Question"]; 
             foreach (DataRow row in dt.Rows)
             {
@@ -258,20 +259,21 @@ namespace Project
             List<Option> optionList = new List<Option>();
             string sql = "select id, question_id, option_name from `option` where question_id =" + questionId;
 
-            if (daQuestion == null)
+           
+            daOption = new MySqlDataAdapter(sql, conn);
+          
+           
+            cb2 = new MySqlCommandBuilder(daOption);
+           
+            if (dsOption == null)
             {
-                daQuestion = new MySqlDataAdapter(sql, conn);
+                dsOption = new DataSet();
             }
-            if (cb2 == null)
-            {
-                cb2 = new MySqlCommandBuilder(daQuestion);
-            }
-            if (dsQuestion == null)
-            {
-                dsQuestion = new DataSet();
-            }
-            daQuestion.Fill(dsQuestion);
-            DataTable dt = dsQuestion.Tables["Question"];
+            
+            dsOption.Clear();
+            daOption.Fill(dsOption,"Option");
+            DataTable dt = dsOption.Tables["Option"];
+
             foreach (DataRow row in dt.Rows)
             {
                 int i = 0;
@@ -292,6 +294,7 @@ namespace Project
                     if (i == 2)
                     {
                         option.OptionName = row[col].ToString();
+                        Console.WriteLine("Option name:" + option.OptionName);
                     } 
                     i++;
                 }
