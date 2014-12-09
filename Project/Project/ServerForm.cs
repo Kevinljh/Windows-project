@@ -17,6 +17,7 @@ namespace Project
         public delegate void ChangeQuestion(Question foreColor, List<Option> optionList);
         public ShowText showTextDelegate;
         public ChangeQuestion changeQuestionDelegate;
+        public 
         HttpServer server;
 
         Thread gameThread;
@@ -47,13 +48,11 @@ namespace Project
 
         public void ShowTextMethod(string myString)
         {
-            //MainTextBox.Text = MainTextBox.Text + "\n" + myString;
             MainTextBox.Text = myString;
         }
         public void ChangeQuestionMethodOld(Color foreColor, string text)
         {
-            TestLable.ForeColor = foreColor;
-            TestLable.Text = text;
+            
         }
         public void ChangeQuestionMethod(Question question, List<Option>optionList)
         {
