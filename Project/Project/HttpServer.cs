@@ -107,29 +107,31 @@ namespace Project
         {
             HttpListenerRequest request = context.Request;
             string requestDate = GetRequestString(request);
+            string clientName = ExtractTaskMessage(requestDate, "myName");
 
             if (requestDate.Contains("logIn"))
             {
-                string clientName = ExtractAnswer(requestDate, "myName");
+                
+                bool isClientExist = FindClient(clientName);
+                if(isClientExist)
+                {
+                    WriteResponse(context, "client already existed");
+                }
+                else
+                {
+                    WriteResponse(context, "welcome");
+                }
+            }
+            else if (requestDate.Contains("ready"))
+            {
+                clientName = ExtractTaskMessage(requestDate, "myName");
                 AddClient(context, clientName);
             }
             else if (requestDate.Contains("answer"))
             {
-                string answer = ExtractAnswer(requestDate, "answer");
+                string answer = ExtractTaskMessage(requestDate, "answer");
 
-                //*****************testing***************//
-                if (answer == "a")
-                {
-                    answer = true.ToString().ToLower();
-                }
-                else if (answer == "b")
-                {
-                    answer = false.ToString().ToLower();
-                }
-                //*****************testing***************//
-
-
-                if (answer == game.result.ToString().ToLower())
+                if (answer == game.result.ToString())
                 {
                     WriteResponse(context, "t");
                 }
@@ -202,20 +204,43 @@ namespace Project
             return localIP;
         }
 
-        private string ExtractAnswer(string content, string target)
+        private string ExtractTaskMessage(string content, string target)
         {
             string answer;
 
             //get the position of answer
             int pos = content.IndexOf(target + "=");
-            answer = content.Substring(pos + 7);
-
+            string temp = content.Substring(pos + target.Length+1);
+            int pos2 = temp.IndexOf("&");
+            if (pos2 < 0)
+            {
+                answer = temp;
+            }
+            else
+            {
+                answer = temp.Substring(0, pos2);
+            }
             return answer;
+        }
+
+        private bool FindClient(string clientName)
+        {
+            bool exist = false;
+
+            foreach (KeyValuePair<string, HttpListenerContext> kvp in myClientList)
+            { 
+                if(kvp.Key == clientName)
+                {
+                    exist = true;
+                }
+            }
+            
+            return exist;
         }
 
         private void AddClient(HttpListenerContext context, string clientName)
         {
-            myClientList.Add(new KeyValuePair<string, HttpListenerContext>(clientName, context));
+            myClientList.Add(new KeyValuePair<string, HttpListenerContext>(clientName, context));           
         }
 
         private void DeleteClient(string clientName)

@@ -53,11 +53,11 @@ namespace Project
 
             q2.foreColor = Color.Red;
             q2.text = Color.Yellow.ToString();
-            q2.answer = true;
+            q2.answer = false;
 
             q3.foreColor = Color.Yellow;
             q3.text = Color.Blue.ToString();
-            q3.answer = true;
+            q3.answer = false;
 
             q4.foreColor = Color.Green;
             q4.text = Color.Green.ToString();
