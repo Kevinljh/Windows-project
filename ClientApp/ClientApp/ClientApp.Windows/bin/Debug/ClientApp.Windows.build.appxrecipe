@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>STUDENT</Machine>
-    <WindowsUser>Students</WindowsUser>
+    <Machine>MICHAEL</Machine>
+    <WindowsUser>User1</WindowsUser>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>75a5886d-98d4-4c57-b9fb-f924e0ae6969</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\obj\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.exe">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.exe">
       <PackagePath>ClientApp.Windows.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\RegisterPage.xbf">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\RegisterPage.xbf">
       <PackagePath>RegisterPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.xr.xml">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\ClientApp.Windows.xr.xml">
       <PackagePath>ClientApp.Windows.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Students\Desktop\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\User1\Documents\GitHub\Windows-project\ClientApp\ClientApp\ClientApp.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
