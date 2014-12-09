@@ -1,4 +1,13 @@
-﻿using ClientApp.Common;
+﻿/*
+* FILE          : MainPage.xaml.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This file contains the Client UI for windows tablets,
+*  this is the users interface for the Brain Game.
+*/
+
+using ClientApp.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +38,6 @@ namespace ClientApp
         
         int seconds2 = 0;
         int seconds = 0;
-        int minute = 0;
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -176,16 +184,22 @@ namespace ClientApp
             dispatcherTimer.Start();
             
         }
+        // NAME     :   TimerStart()
+        // PURPOSE  :   Function To start the dispatcherTimer
         private void TimerStart()
         {
             dispatcherTimer.Start();
         }
 
+        // NAME     :   TimerStop()
+        // PURPOSE  :   Function To Stop the dispatcherTimer
         private void TimerStop()
         {
             dispatcherTimer.Stop();
         }
 
+        // NAME     :   TimerReset()
+        // PURPOSE  :   Function To Reset the dispatcherTimer to 00
         private void TimerReset()
         {
             seconds = 0;
@@ -195,26 +209,37 @@ namespace ClientApp
             roamingSettings.Values["seconds"] = 0;
             roamingSettings.Values["seconds2"] = 0;
         }
+
+        // NAME     :   AButton_Click()
+        // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
         private void AButton_Click(object sender, RoutedEventArgs e)
         {      
             client.sendAnwser("a");          
         }
 
+        // NAME     :   BButton_Click()
+        // PURPOSE  :   When Button "b" is pressed the client will send that user pressed "b"
         private void BButton_Click(object sender, RoutedEventArgs e)
         {     
             client.sendAnwser("b");
         }
 
+        // NAME     :   CButton_Click()
+        // PURPOSE  :   When Button "c" is pressed the client will send that user pressed "c"
         private void CButton_Click(object sender, RoutedEventArgs e)
         {  
             client.sendAnwser("c");
         }
 
-        private void DButton_Click(object sender, RoutedEventArgs e)S
+        // NAME     :   DButton_Click()
+        // PURPOSE  :   When Button "d" is pressed the client will send that user pressed "d"
+        private void DButton_Click(object sender, RoutedEventArgs e)
         {
             client.sendAnwser("d");
         }
 
+        // NAME     :   QuestionPlaceHolder_Loaded()
+        // PURPOSE  :   Load Question into QuestionPlaceHolder TextBlock
         private void QuestionPlaceHolder_Loaded(object sender, RoutedEventArgs e)
         {
             QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +

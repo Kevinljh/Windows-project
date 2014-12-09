@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+* FILE          : RegisterPage.xaml.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - Final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This file contains the Client UI for windows tables that 
+* displays the user login page used to connect to the server for the Brain Game.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +38,8 @@ namespace ClientApp
             this.InitializeComponent();         
         }
 
+        // NAME     :   LogInBtn_Click()
+        // PURPOSE  :   Takes users input from textboxs and sends HTTP request to server to connect with.
         private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
             client = new MyHttpClient(ServerIPTB.Text, NameTB.Text);
