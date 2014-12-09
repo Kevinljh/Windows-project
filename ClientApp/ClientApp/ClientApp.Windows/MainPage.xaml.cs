@@ -26,7 +26,7 @@ namespace ClientApp
     {
 
         DispatcherTimer dispatcherTimer;
-        int GameState = 0;
+        
         int seconds2 = 0;
         int seconds = 0;
         int minute = 0;
@@ -165,7 +165,7 @@ namespace ClientApp
             roamingSettings.Values["TimerSave"] = Timer.Text;
             roamingSettings.Values["seconds"] = seconds;
             roamingSettings.Values["seconds2"] = seconds2;
-            roamingSettings.Values["minute"] = minute;
+            
         }
 
         // NAME     :   Timer_Loaded()
@@ -174,38 +174,52 @@ namespace ClientApp
         {
             DispatcherTimerSetup();
             dispatcherTimer.Start();
+            
+        }
+        private void TimerStart()
+        {
+            dispatcherTimer.Start();
         }
 
-        private void AButton_Click(object sender, RoutedEventArgs e)
+        private void TimerStop()
         {
+            dispatcherTimer.Stop();
+        }
+
+        private void TimerReset()
+        {
+            seconds = 0;
+            seconds2 = 0;
             Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["AButton"] = "";
-            client.sendAnwser("a");
+            Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["seconds"] = 0;
+            roamingSettings.Values["seconds2"] = 0;
+        }
+        private void AButton_Click(object sender, RoutedEventArgs e)
+        {      
+            client.sendAnwser("a");          
         }
 
         private void BButton_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["BButton"] = "";
+        {     
             client.sendAnwser("b");
         }
 
         private void CButton_Click(object sender, RoutedEventArgs e)
-        {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["CButton"] = "";
+        {  
             client.sendAnwser("c");
         }
 
-        private void DButton_Click(object sender, RoutedEventArgs e)
+        private void DButton_Click(object sender, RoutedEventArgs e)S
         {
-            Windows.Storage.ApplicationDataContainer roamingSettings =
-               Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["DButton"] = ""; 
             client.sendAnwser("d");
+        }
+
+        private void QuestionPlaceHolder_Loaded(object sender, RoutedEventArgs e)
+        {
+            QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +
+            "A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
+ 
         }
 
         
