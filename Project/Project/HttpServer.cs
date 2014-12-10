@@ -10,7 +10,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Collections;
-
 namespace Project
 {
     public class HttpServer : IDisposable
@@ -25,15 +24,18 @@ namespace Project
         ServerForm myFormContrl;
         GameEngine game;
         public bool gameIsRuning = false;
-        List <Client> myClientList;
-        
+        List<Client> myClientList;
+        public delegate void UpdateClientList(List<Client> clientList);
+        public UpdateClientList UpdateClientListDelegate;
+        public HttpServer server;
+        BindingSource source;
         public HttpServer(ServerForm myForm)
         {
             listener = new HttpListener();
             listenerThread = new Thread(HandleRequests);
             stop = new ManualResetEvent(false);
             myFormContrl = myForm;
-            game = new GameEngine(myFormContrl);
+            game = new GameEngine(myFormContrl, this);
             serverUrl = LocalIPAddress();
             myClientList = new List<Client>();
         }
@@ -84,7 +86,6 @@ namespace Project
             {
                 //Bocks ntil there is a request to be processed
                 context = h1.EndGetContext(ar);
-
             }
             catch (Exception ex)
             {
@@ -128,8 +129,8 @@ namespace Project
             {
                 //client ready wait for game to start
                 AddClient(context, clientName);
-                Thread.Sleep(5000);
-                WriteResponse(context, "go");
+                //Thread.Sleep(5000);
+                //WriteResponse(context, "go");
             }
             else if (clientRequestTask == "answer")
             {
@@ -144,6 +145,10 @@ namespace Project
                 {
                     WriteResponse(context, "f");
                 }
+            }
+            else if(clientRequestTask == "question")
+            {
+                SendQuestoin();
             }
             myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
         }
@@ -183,18 +188,37 @@ namespace Project
                 response.ContentLength64 = buffer.LongLength;
                 response.OutputStream.Write(buffer, 0, buffer.Length);
             }
+            context.Response.Close();
         }
 
         public void GameStart()
         {
             gameIsRuning = true;
+            //SendGo();
+
             game.SwitchQuestions();
             gameIsRuning = false;
         }
 
+        public void SendGo()
+        {
+            foreach (Client client in myClientList)
+            {
+                WriteResponse(client.Context, "go");
+            }
+        }
+
+        public void SendQuestoin()
+        {
+            foreach (Client client in myClientList)
+            {
+                WriteResponse(client.Context, game.currentQuestion.Content);
+            }
+        }
+
         private void NotifyClientStartGame()
         {
-            foreach (Client c in myClientList)
+            foreach(Client c in myClientList)
             {
                 WriteResponse(c.Context, "start");
             }
@@ -254,21 +278,17 @@ namespace Project
         private void AddClient(HttpListenerContext context, string clientName)
         {
             Client temp = new Client();
-            temp.Name = clientName;
+            temp.Name =clientName;
             temp.Context = context;
             temp.Score = 0;
-            myClientList.Add(temp);
             updateClientList();
-          
         }
-
         private void updateClientList()
         {
             myClientList.Sort();
             myFormContrl.Invoke(myFormContrl.UpdateClientListDelegate, new Object[] { myClientList });
-            
+             
         }
-
         private void DeleteClient(string clientName)
         {
             myClientList.Clear();

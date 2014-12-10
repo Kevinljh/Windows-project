@@ -18,30 +18,31 @@ namespace Project
         private List<Option> options;
         private DBAccessor dbAccessor;
         private int categoryId = 1;
+        public Question currentQuestion;
+        HttpServer myServer;
         //signal r
         //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
-        public GameEngine(ServerForm myForm)
+        public GameEngine(ServerForm myForm, HttpServer myServer)
         {
             myFormContrl = myForm;
             myQuestionRespository = new List<QuestionRepository>();
             GenerateQuestionRepository();
             dbAccessor = new DBAccessor();
             questions = dbAccessor.GetQuestions(categoryId);
-
+            this.myServer = myServer;
         }
 
         public void SwitchQuestions()
-        {
-           
+        {       
             foreach (Question question in questions)
             {
-
+                
+                currentQuestion = question;
                 this.options = dbAccessor.GetOptions(question.ID);
                 myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, options });
-
-                Thread.Sleep(3000);
+                //myServer.SendQuestoin();
+                Thread.Sleep(6000);
             }
-
         }
 
 

@@ -15,11 +15,11 @@ namespace Project
     {
         public delegate void ShowText(String myString);
         public delegate void ChangeQuestion(Question foreColor, List<Option> optionList);
-        public delegate void UpdateClientList( List<Client> clientList);
+        public delegate void UpdateClientList(List<Client> clientList);
         public ShowText showTextDelegate;
         public ChangeQuestion changeQuestionDelegate;
-        public UpdateClientList UpdateClientListDelegate;
         public HttpServer server;
+        public UpdateClientList UpdateClientListDelegate; 
         BindingSource source;
         Thread gameThread;
 
@@ -31,15 +31,14 @@ namespace Project
             UpdateClientListDelegate = new UpdateClientList(UpdateClientListMethod);
             server = new HttpServer(this);
             IPAdressLB.Text = "IP:" + server.LocalIPAddress().TrimEnd('/');
-            source = new BindingSource();
-            clientGridView.DataSource = source;
-
+            server.Start();
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
             if (!server.gameIsRuning)
             {
+                
                 gameThread = new Thread(new ThreadStart(server.GameStart));
                 gameThread.Start();
             }
@@ -55,11 +54,11 @@ namespace Project
         {
             MainTextBox.Text = myString;
         }
-        public void UpdateClientListMethod(List<Client> clientList){
-            
+        public void UpdateClientListMethod(List<Client> clientList)
+        {
+
             source.DataSource = clientList;
             source.ResetBindings(false);
-            
         }
         public void ChangeQuestionMethod(Question question, List<Option>optionList)
         {
@@ -115,10 +114,6 @@ namespace Project
                     }
                 }
             }
-        }
-        private void ListenBtn_Click(object sender, EventArgs e)
-        {
-            server.Start();
         }
 
         private void SettingStripLabel_Click(object sender, EventArgs e)
