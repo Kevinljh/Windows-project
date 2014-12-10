@@ -13,9 +13,8 @@ namespace Project
         ServerForm myFormContrl;
         List<QuestionRepository> myQuestionRespository;
         Random rnd = new Random();
-        public bool result;
         private List<Question> questions;
-        private List<Option> options;
+        public List<Option> Options{set; get;}
         private DBAccessor dbAccessor;
         private int categoryId = 1;
         public Question currentQuestion;
@@ -38,10 +37,10 @@ namespace Project
             {
                 
                 currentQuestion = question;
-                this.options = dbAccessor.GetOptions(question.ID);
-                myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, options });
-                //myServer.SendQuestoin();
-                Thread.Sleep(6000);
+                this.Options = dbAccessor.GetOptions(question.ID);
+                myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, Options });
+                myServer.SendQuestoin();
+                Thread.Sleep(12000);
             }
         }
 

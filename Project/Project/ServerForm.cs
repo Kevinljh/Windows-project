@@ -30,6 +30,8 @@ namespace Project
             changeQuestionDelegate = new ChangeQuestion(ChangeQuestionMethod);
             UpdateClientListDelegate = new UpdateClientList(UpdateClientListMethod);
             server = new HttpServer(this);
+            source = new BindingSource();
+            clientGridView.DataSource = source;
             IPAdressLB.Text = "IP:" + server.LocalIPAddress().TrimEnd('/');
             server.Start();
         }

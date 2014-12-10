@@ -29,6 +29,7 @@ namespace Project
         public UpdateClientList UpdateClientListDelegate;
         public HttpServer server;
         BindingSource source;
+        string optionString = "";
         public HttpServer(ServerForm myForm)
         {
             listener = new HttpListener();
@@ -120,6 +121,10 @@ namespace Project
                 {
                     WriteResponse(context, "client already existed");
                 }
+                else if(gameIsRuning)
+                {
+                    WriteResponse(context, "please wait for next game");  
+                }
                 else
                 {
                     WriteResponse(context, "welcome");
@@ -127,18 +132,23 @@ namespace Project
             }
             else if (clientRequestTask == "ready")
             {
-                //client ready wait for game to start
                 AddClient(context, clientName);
-                //Thread.Sleep(5000);
-                //WriteResponse(context, "go");
             }
             else if (clientRequestTask == "answer")
             {
                 string answer = ExtractTaskMessage(requestDate, "myAnswer");
 
                 //respose result
-                if (answer == game.result.ToString())
+                if (answer == game.currentQuestion.Answer.Substring(0,1))
                 {
+                    foreach (Client kvp in myClientList)
+                    {
+                        if (kvp.Name == clientName)
+                        {
+                            kvp.Score++;
+                        }
+                    }
+                    updateClientList();
                     WriteResponse(context, "t");
                 }
                 else
@@ -148,9 +158,15 @@ namespace Project
             }
             else if(clientRequestTask == "question")
             {
-                SendQuestoin();
+                foreach (Client client in myClientList)
+                {
+                    if (client.Name == clientName)
+                    {
+                        client.Context = context;
+                    }
+                }
             }
-            myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
+            Console.WriteLine(requestDate);
         }
 
         private string GetRequestString(HttpListenerRequest request)
@@ -200,27 +216,18 @@ namespace Project
             gameIsRuning = false;
         }
 
-        public void SendGo()
-        {
-            foreach (Client client in myClientList)
-            {
-                WriteResponse(client.Context, "go");
-            }
-        }
-
         public void SendQuestoin()
-        {
+        {           
             foreach (Client client in myClientList)
             {
-                WriteResponse(client.Context, game.currentQuestion.Content);
-            }
-        }
+                string optionStr = "";
+                
+                foreach (Option option in game.Options){
 
-        private void NotifyClientStartGame()
-        {
-            foreach(Client c in myClientList)
-            {
-                WriteResponse(c.Context, "start");
+                    optionStr += option.OptionName;
+                    optionStr += "\n";            
+                }            
+                WriteResponse(client.Context, game.currentQuestion.Content+"\n"+optionStr);
             }
         }
 
@@ -281,6 +288,7 @@ namespace Project
             temp.Name =clientName;
             temp.Context = context;
             temp.Score = 0;
+            myClientList.Add(temp);
             updateClientList();
         }
         private void updateClientList()
