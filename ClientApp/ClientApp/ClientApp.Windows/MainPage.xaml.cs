@@ -43,6 +43,7 @@ namespace ClientApp
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         MyHttpClient client;
+
         /// <summary>
         /// This can be changed to a strongly typed view model.
         /// </summary>
@@ -102,6 +103,7 @@ namespace ClientApp
             }
 
             client = e.NavigationParameter as MyHttpClient;
+            client.myMainPage = this;
             ScoreTb.DataContext = client;
         }
 
@@ -115,6 +117,7 @@ namespace ClientApp
         /// serializable state.</param>
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+
         }
 
         #region NavigationHelper registration
@@ -144,7 +147,6 @@ namespace ClientApp
         // PURPOSE  :   Setups the dispatcherTimer, and adds the ticks together 
         public void DispatcherTimerSetup()
         {
-
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
@@ -154,14 +156,19 @@ namespace ClientApp
         // PURPOSE  :   Acts as the clock, every second/tick, 1 is added to the seconds
         void dispatcherTimer_Tick(object sender, object e)
         {
-            Timer.Text = "Timer:" + seconds2 + seconds;
-            seconds++;
-            if (seconds > 9)
+            Timer.Text = "Time:" + seconds2 + seconds;
+            if(seconds2==0 && seconds ==2)
             {
-                seconds2++;
+                //TimerStop();
+                client.sendQuestionRequest();
+            }
+            seconds++;
+            if (seconds > 5)
+            {
+                //seconds2++;
                 seconds = 0;
             }
-            else if (seconds2 > 5)
+            else if (seconds2 > 0)
             {
                 seconds2 = 0;
                 seconds = 0;
@@ -180,20 +187,18 @@ namespace ClientApp
         // PURPOSE  :   Setup the dispatch timer when loaded and hide to stop button
         private void Timer_Load(object sender, RoutedEventArgs e)
         {
-            DispatcherTimerSetup();
-            dispatcherTimer.Start();
-            
+            DispatcherTimerSetup();         
         }
         // NAME     :   TimerStart()
         // PURPOSE  :   Function To start the dispatcherTimer
-        private void TimerStart()
+        public void TimerStart()
         {
             dispatcherTimer.Start();
         }
 
         // NAME     :   TimerStop()
         // PURPOSE  :   Function To Stop the dispatcherTimer
-        private void TimerStop()
+        public void TimerStop()
         {
             dispatcherTimer.Stop();
         }
@@ -242,12 +247,18 @@ namespace ClientApp
         // PURPOSE  :   Load Question into QuestionPlaceHolder TextBlock
         private void QuestionPlaceHolder_Loaded(object sender, RoutedEventArgs e)
         {
-            QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +
-            "A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
+            //QuestionPlaceHolder.Text = "Wild mice only live for an average of? \n" +
+            //"A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
         }
 
-        
+        public void ResultMessage(string result)
+        {
+            ResultTB.Text = result;
+        }
 
-
+        public void ShowQuestion(string question)
+        {
+            QuestionPlaceHolder.Text = question;
+        }
     }
 }

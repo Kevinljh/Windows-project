@@ -8,6 +8,7 @@ using System.Net.Http;
 using Windows.UI.Xaml;
 using System.ComponentModel;
 using System.Net;
+using Windows.UI.Xaml.Controls;
 
 namespace ClientApp
 {
@@ -19,9 +20,10 @@ namespace ClientApp
         public int scoreCounter = 0;
         string score;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        //public String serverUrl = "http://10.113.21.154:8081/";
         private readonly String serverUrl;
         public readonly string myName;
+        public bool logInError;
+        public MainPage myMainPage;
 
         public MyHttpClient(string serverIP, string name)
         {
@@ -50,17 +52,27 @@ namespace ClientApp
 
         public void logInRequest()
         {
+            logInError = false;
             postData.Clear();
             postData.Add(new KeyValuePair<string, string>("myTask", "logIn"));
             postData.Add(new KeyValuePair<string, string>("myName", myName));
             requestContent = new FormUrlEncodedContent(postData);
-            sendRequest();
+            logInSendRequest();
 
             postData.Clear();
             postData.Add(new KeyValuePair<string, string>("myTask", "ready"));
             postData.Add(new KeyValuePair<string, string>("myName", myName));
             requestContent = new FormUrlEncodedContent(postData);
             sendRequest();
+        }
+
+        public void sendQuestionRequest()
+        {
+            postData.Clear();
+            postData.Add(new KeyValuePair<string, string>("myTask", "question"));
+            postData.Add(new KeyValuePair<string, string>("myName", myName));
+            requestContent = new FormUrlEncodedContent(postData);
+            logInSendRequest();
         }
 
         public void sendAnwser(string answer)
@@ -73,34 +85,94 @@ namespace ClientApp
             sendRequest();
         }
 
+        //send request with sync, so ui can notice error
+        public async void logInSendRequest()
+        {
+            try
+            {
+                myResponseMsg = base.PostAsync(serverUrl, requestContent).Result;
+
+                //wait for respose
+                string content = await myResponseMsg.Content.ReadAsStringAsync();
+                dealResponseContent(content);
+            }
+            catch (Exception e)
+            {
+                logInError = true;
+            }
+        }
+
         public async void sendRequest()
         {
-            myResponseMsg = await base.PostAsync(serverUrl, requestContent);
-            //wait for respose
-            string content = await myResponseMsg.Content.ReadAsStringAsync();
-            dealResponseContent(content);
-            
+            try
+            {
+                myResponseMsg = await base.PostAsync(serverUrl, requestContent);
+
+                //wait for respose
+                string content = await myResponseMsg.Content.ReadAsStringAsync();
+                dealResponseContent(content);
+            }
+            catch(Exception e)
+            {
+                logInError = true;
+            }
         }
 
         private void dealResponseContent(string content)
         {
+            if (content == "client already existed")
+            {
+                logInError = true;
+            }
+            else if (content == "welcome")
+            {
+                
+            }
+            else if (content == "go")
+            {
+
+                myMainPage.TimerStart();
+            }
             //get return t/f(true/false) from server
             //increse score
-            if (content == "t")
+            else if (content == "t")
             {
+                myMainPage.ResultMessage("BINGO! YOU'RE AWESOME!");
                 scoreCounter++;
                 scoreProperty = scoreCounter.ToString();
+            }   
+            else if (content == "f")
+            {
+                myMainPage.ResultMessage("OH NO! YOU SUCK!");
             }
-            if (content == "go")
+            else
             {
-                scoreCounter++;
-                scoreProperty = scoreCounter.ToString();
-            }
-            if (content == "welcome")
-            {
-                scoreCounter++;
-                scoreProperty = scoreCounter.ToString();
+                myMainPage.ShowQuestion(content);
+                //myMainPage.TimerStart();
             }
         }
+
+        private string ExtractTaskMessage(string content, string target)
+        {
+            string answer;
+
+            //get the position of answer
+            int pos = content.IndexOf(target + "=");
+            string temp = content.Substring(pos + target.Length + 1);
+            int pos2 = temp.IndexOf("&");
+            if (pos2 < 0)
+            {
+                answer = temp;
+            }
+            else
+            {
+                answer = temp.Substring(0, pos2);
+            }
+            return answer;
+        }
+
+
+
+
     }
 }

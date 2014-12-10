@@ -13,6 +13,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="419,259,0,0" TextWrapping="Wrap" Text="Server IP" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="437,395,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="24"/>
         <Button x:Name="LogInBtn" Content="Log In" HorizontalAlignment="Left" Margin="600,546,0,0" VerticalAlignment="Top" FontSize="24" Click="LogInBtn_Click"/>
+        <TextBlock x:Name="ErrorMessageTB" HorizontalAlignment="Left" Margin="524,471,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="312"/>
 
     </Grid>
 </Page>

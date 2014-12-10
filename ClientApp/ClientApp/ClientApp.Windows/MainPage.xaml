@@ -44,9 +44,10 @@
         <Button Content="B" HorizontalAlignment="Left" Margin="425,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="BButton_Click"/>
         <Button Content="C" HorizontalAlignment="Left" Margin="737,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="CButton_Click"/>
         <Button Content="D" HorizontalAlignment="Left" Margin="1061,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="DButton_Click"/>
-        <TextBlock x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Timer" VerticalAlignment="Top" Height="70" Width="188" FontSize="48" Loaded="Timer_Load"/>
+        <TextBlock x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" Height="70" Width="188" FontSize="48" Loaded="Timer_Load"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
         <TextBlock x:Name="ScoreTb" Text="{Binding Path=scoreProperty}" HorizontalAlignment="Left" Margin="155,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
         <TextBlock x:Name="QuestionPlaceHolder" HorizontalAlignment="Left" Margin="155,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Question?" VerticalAlignment="Top" FontSize="48" Height="281" Width="1065" Loaded="QuestionPlaceHolder_Loaded"/>
+        <TextBlock x:Name="ResultTB" HorizontalAlignment="Left" Margin="612,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="180"/>
     </Grid>
 </Page>

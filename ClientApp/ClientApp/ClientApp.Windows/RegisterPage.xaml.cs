@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -42,9 +43,18 @@ namespace ClientApp
         // PURPOSE  :   Takes users input from textboxs and sends HTTP request to server to connect with.
         private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
-            client = new MyHttpClient(ServerIPTB.Text, NameTB.Text);           
+            client = new MyHttpClient(ServerIPTB.Text, NameTB.Text);
             client.logInRequest();
-            Frame.Navigate(typeof(MainPage), client);
+
+            //check if ip is valid and the name is already existed on server side
+            if (!client.logInError)
+            {
+                Frame.Navigate(typeof(MainPage), client);
+            }
+            else
+            {
+                ErrorMessageTB.Text = "Invalid IP or Name is already existed";
+            }
         }
     }
 }
