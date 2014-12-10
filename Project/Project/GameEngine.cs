@@ -21,12 +21,13 @@ namespace Project
         HttpServer myServer;
         //signal r
         //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
-        public GameEngine(ServerForm myForm, HttpServer myServer)
+        public GameEngine(ServerForm myForm, HttpServer myServer, int pcategoryId)
         {
             myFormContrl = myForm;
             myQuestionRespository = new List<QuestionRepository>();
             GenerateQuestionRepository();
             dbAccessor = new DBAccessor();
+            this.categoryId = pcategoryId;
             questions = dbAccessor.GetQuestions(categoryId);
             this.myServer = myServer;
         }
@@ -42,6 +43,35 @@ namespace Project
                 myServer.SendQuestoin();
                 Thread.Sleep(12000);
             }
+            Question temp = new Question();
+            temp.Content = "Game Over.";
+            currentQuestion = temp;
+            int i = 0;
+            //clean options in UI
+            foreach (Option option in Options){
+                if (i == 0)
+                {
+                    option.OptionName = "a-";
+                }
+                
+                if (i == 1)
+                {
+                    option.OptionName = "b-";
+                }
+
+                if (i == 2)
+                {
+                    option.OptionName = "c-";
+                }
+
+                if (i == 3)
+                {
+                    option.OptionName = "d-";
+                }
+                i++;
+            }
+            myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { temp, Options });
+            myServer.SendQuestoin();
         }
 
 

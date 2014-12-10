@@ -293,8 +293,7 @@ namespace Project
 
                     if (i == 2)
                     {
-                        option.OptionName = row[col].ToString();
-                        Console.WriteLine("Option name:" + option.OptionName);
+                        option.OptionName = row[col].ToString(); 
                     } 
                     i++;
                 }

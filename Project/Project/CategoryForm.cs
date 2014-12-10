@@ -15,8 +15,10 @@ namespace Project
         private DataSet dscategories;
         private DataSet dsquestions;
         private DataSet dsOptions;
-        public SettingForm()
+        private Form mainForm;
+        public SettingForm( Form form)
         {
+            this.mainForm = form;
             InitializeComponent();
         }
         private DBAccessor dbAccessor;
@@ -90,6 +92,12 @@ namespace Project
         private void OptionSavebutton_Click(object sender, EventArgs e)
         {
             dbAccessor.updateOption(ref dsOptions);
+        }
+
+        private void backLabel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            mainForm.Show();
         }
 
         

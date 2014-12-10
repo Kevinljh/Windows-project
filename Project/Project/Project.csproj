@@ -54,6 +54,12 @@
     <Compile Include="CategoryForm.Designer.cs">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoosecategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoosecategoryForm.Designer.cs">
+      <DependentUpon>ChoosecategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="DBAccessor.cs" />
     <Compile Include="GameEngine.cs" />
@@ -70,6 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChoosecategoryForm.resx">
+      <DependentUpon>ChoosecategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServerForm.resx">
       <DependentUpon>ServerForm.cs</DependentUpon>
