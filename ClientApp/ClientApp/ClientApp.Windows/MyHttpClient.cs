@@ -18,11 +18,11 @@ namespace ClientApp
         HttpContent requestContent;
         List<KeyValuePair<string, string>> postData;
         public int scoreCounter = 0;
-        string score;
+        string score = "0";
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         private readonly String serverUrl;
         public readonly string myName;
-        public bool logInError;
+        public int logInError;
         public MainPage myMainPage;
 
         public MyHttpClient(string serverIP, string name)
@@ -52,13 +52,16 @@ namespace ClientApp
 
         public void logInRequest()
         {
-            logInError = false;
+            logInError = 0;
             postData.Clear();
             postData.Add(new KeyValuePair<string, string>("myTask", "logIn"));
             postData.Add(new KeyValuePair<string, string>("myName", myName));
             requestContent = new FormUrlEncodedContent(postData);
-            logInSendRequest();
+            logInSendRequest();            
+        }
 
+        public void sendReady()
+        {
             postData.Clear();
             postData.Add(new KeyValuePair<string, string>("myTask", "ready"));
             postData.Add(new KeyValuePair<string, string>("myName", myName));
@@ -98,7 +101,7 @@ namespace ClientApp
             }
             catch (Exception e)
             {
-                logInError = true;
+                logInError = 1;
             }
         }
 
@@ -114,7 +117,7 @@ namespace ClientApp
             }
             catch(Exception e)
             {
-                logInError = true;
+                logInError = 1;
             }
         }
 
@@ -122,16 +125,15 @@ namespace ClientApp
         {
             if (content == "client already existed")
             {
-                logInError = true;
+                logInError = 1;
+            }
+            else if(content =="please wait for next game")
+            {
+                logInError = 2;
             }
             else if (content == "welcome")
             {
-                
-            }
-            else if (content == "go")
-            {
-
-                myMainPage.TimerStart();
+                myMainPage.messageTB.Text = "Please wait for everybody";
             }
             //get return t/f(true/false) from server
             //increse score
@@ -145,10 +147,15 @@ namespace ClientApp
             {
                 myMainPage.ResultMessage("OH NO! YOU SUCK!");
             }
+            else if(content == "end")
+            {
+                myMainPage.questionTB.Text = "Game Over";
+                myMainPage.nextGameBtn.IsEnabled = true;
+            }
             else
             {
                 myMainPage.ShowQuestion(content);
-                //myMainPage.TimerStart();
+                myMainPage.TimerStart();
             }
         }
 
@@ -170,9 +177,5 @@ namespace ClientApp
             }
             return answer;
         }
-
-
-
-
     }
 }

@@ -47,13 +47,18 @@ namespace ClientApp
             client.logInRequest();
 
             //check if ip is valid and the name is already existed on server side
-            if (!client.logInError)
+            if (client.logInError == 0)
             {
+                client.sendReady();
                 Frame.Navigate(typeof(MainPage), client);
             }
-            else
+            else if(client.logInError == 1)
             {
                 ErrorMessageTB.Text = "Invalid IP or Name is already existed";
+            }
+            else if(client.logInError == 2)
+            {
+                ErrorMessageTB.Text = "Please wait for next game";
             }
         }
     }

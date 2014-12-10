@@ -44,6 +44,9 @@ namespace ClientApp
 
         MyHttpClient client;
 
+        public TextBlock messageTB;
+        public Button nextGameBtn;
+        public TextBlock questionTB;
         /// <summary>
         /// This can be changed to a strongly typed view model.
         /// </summary>
@@ -67,7 +70,10 @@ namespace ClientApp
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
-            this.navigationHelper.SaveState += navigationHelper_SaveState;          
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
+            messageTB = ResultTB;
+            nextGameBtn = NextGameBtn;
+            questionTB = QuestionPlaceHolder;
         }
 
         /// <summary>
@@ -157,21 +163,25 @@ namespace ClientApp
         void dispatcherTimer_Tick(object sender, object e)
         {
             Timer.Text = "Time:" + seconds2 + seconds;
-            if(seconds2==0 && seconds ==2)
-            {
-                //TimerStop();
-                client.sendQuestionRequest();
-            }
+                       
+            
             seconds++;
-            if (seconds > 5)
+            if (seconds > 9)
             {
-                //seconds2++;
+                seconds2++;
                 seconds = 0;
             }
             else if (seconds2 > 0)
             {
                 seconds2 = 0;
                 seconds = 0;
+                disableEnable();
+            }
+
+            if (seconds2 == 0 && seconds == 0)
+            {
+                //TimerStop();
+                client.sendQuestionRequest();
             }
 
             // save the session variable to keep track of seconds while application is closed or on another page
@@ -217,9 +227,33 @@ namespace ClientApp
 
         // NAME     :   AButton_Click()
         // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
+        private void disableEnable()
+        {
+            if ((ButtonA.IsEnabled == true) || (ButtonB.IsEnabled == true) || (ButtonC.IsEnabled == true) || (ButtonD.IsEnabled == true))
+            {
+                ButtonA.IsEnabled = false;
+                ButtonB.IsEnabled = false;
+                ButtonC.IsEnabled = false;
+                ButtonD.IsEnabled = false;
+
+            }
+            else if ((ButtonA.IsEnabled == false) || (ButtonB.IsEnabled == false) || (ButtonC.IsEnabled == false) || (ButtonD.IsEnabled == false))
+            {
+                ButtonA.IsEnabled = true;
+                ButtonB.IsEnabled = true;
+                ButtonC.IsEnabled = true;
+                ButtonD.IsEnabled = true;
+            }
+        }
+
+        // NAME     :   AButton_Click()
+        // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
         private void AButton_Click(object sender, RoutedEventArgs e)
         {      
-            client.sendAnwser("a");          
+            client.sendAnwser("a");
+            disableEnable();
+            
+          
         }
 
         // NAME     :   BButton_Click()
@@ -227,6 +261,7 @@ namespace ClientApp
         private void BButton_Click(object sender, RoutedEventArgs e)
         {     
             client.sendAnwser("b");
+            disableEnable();
         }
 
         // NAME     :   CButton_Click()
@@ -234,6 +269,7 @@ namespace ClientApp
         private void CButton_Click(object sender, RoutedEventArgs e)
         {  
             client.sendAnwser("c");
+            disableEnable();
         }
 
         // NAME     :   DButton_Click()
@@ -241,6 +277,7 @@ namespace ClientApp
         private void DButton_Click(object sender, RoutedEventArgs e)
         {
             client.sendAnwser("d");
+            disableEnable();
         }
 
         // NAME     :   QuestionPlaceHolder_Loaded()
@@ -259,6 +296,11 @@ namespace ClientApp
         public void ShowQuestion(string question)
         {
             QuestionPlaceHolder.Text = question;
+        }
+
+        private void NextGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            client.sendReady();
         }
     }
 }
