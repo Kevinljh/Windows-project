@@ -9,10 +9,11 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Net.Sockets;
+using System.Collections;
 
 namespace Project
 {
-    class HttpServer : IDisposable
+    public class HttpServer : IDisposable
     {
         //class attributes
         //using readoly prevent someone acidentally changing the value
@@ -24,14 +25,8 @@ namespace Project
         ServerForm myFormContrl;
         GameEngine game;
         public bool gameIsRuning = false;
-        List<Client> myClientList;
-        public struct Client
-        {
-            public string name;
-            public HttpListenerContext context;
-            public int score;
-        }
-
+        List <Client> myClientList;
+        
         public HttpServer(ServerForm myForm)
         {
             listener = new HttpListener();
@@ -89,6 +84,7 @@ namespace Project
             {
                 //Bocks ntil there is a request to be processed
                 context = h1.EndGetContext(ar);
+
             }
             catch (Exception ex)
             {
@@ -121,8 +117,7 @@ namespace Project
                 bool isClientExist = FindClient(clientName);
                 if(isClientExist)
                 {
-                    WriteResponse(context, "welcome");
-                    //WriteResponse(context, "client already existed");
+                    WriteResponse(context, "client already existed");
                 }
                 else
                 {
@@ -199,9 +194,9 @@ namespace Project
 
         private void NotifyClientStartGame()
         {
-            foreach(Client c in myClientList)
+            foreach (Client c in myClientList)
             {
-                WriteResponse(c.context, "start");
+                WriteResponse(c.Context, "start");
             }
         }
 
@@ -247,7 +242,7 @@ namespace Project
 
             foreach (Client kvp in myClientList)
             { 
-                if(kvp.name == clientName)
+                if(kvp.Name == clientName)
                 {
                     exist = true;
                 }
@@ -259,10 +254,19 @@ namespace Project
         private void AddClient(HttpListenerContext context, string clientName)
         {
             Client temp = new Client();
-            temp.name =clientName;
-            temp.context = context;
-            temp.score = 0;
-            myClientList.Add(temp);           
+            temp.Name = clientName;
+            temp.Context = context;
+            temp.Score = 0;
+            myClientList.Add(temp);
+            updateClientList();
+          
+        }
+
+        private void updateClientList()
+        {
+            myClientList.Sort();
+            myFormContrl.Invoke(myFormContrl.UpdateClientListDelegate, new Object[] { myClientList });
+            
         }
 
         private void DeleteClient(string clientName)

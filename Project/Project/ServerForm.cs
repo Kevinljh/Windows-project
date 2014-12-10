@@ -15,11 +15,12 @@ namespace Project
     {
         public delegate void ShowText(String myString);
         public delegate void ChangeQuestion(Question foreColor, List<Option> optionList);
+        public delegate void UpdateClientList( List<Client> clientList);
         public ShowText showTextDelegate;
         public ChangeQuestion changeQuestionDelegate;
-        public 
-        HttpServer server;
-
+        public UpdateClientList UpdateClientListDelegate;
+        public HttpServer server;
+        BindingSource source;
         Thread gameThread;
 
         public ServerForm()
@@ -27,8 +28,12 @@ namespace Project
             InitializeComponent();
             showTextDelegate = new ShowText(ShowTextMethod);
             changeQuestionDelegate = new ChangeQuestion(ChangeQuestionMethod);
+            UpdateClientListDelegate = new UpdateClientList(UpdateClientListMethod);
             server = new HttpServer(this);
             IPAdressLB.Text = "IP:" + server.LocalIPAddress().TrimEnd('/');
+            source = new BindingSource();
+            clientGridView.DataSource = source;
+
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -50,8 +55,10 @@ namespace Project
         {
             MainTextBox.Text = myString;
         }
-        public void ChangeQuestionMethodOld(Color foreColor, string text)
-        {
+        public void UpdateClientListMethod(List<Client> clientList){
+            
+            source.DataSource = clientList;
+            source.ResetBindings(false);
             
         }
         public void ChangeQuestionMethod(Question question, List<Option>optionList)

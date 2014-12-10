@@ -54,6 +54,7 @@
     <Compile Include="CategoryForm.Designer.cs">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs" />
     <Compile Include="DBAccessor.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="HttpServer.cs" />

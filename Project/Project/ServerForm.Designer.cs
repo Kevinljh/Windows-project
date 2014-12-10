@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ALabel = new System.Windows.Forms.Label();
             this.BLabel = new System.Windows.Forms.Label();
             this.DLabel = new System.Windows.Forms.Label();
@@ -46,15 +47,18 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.IPAdressLB = new System.Windows.Forms.ToolStripStatusLabel();
             this.ListenStatusLB = new System.Windows.Forms.ToolStripStatusLabel();
+            this.clientListLabel = new System.Windows.Forms.Label();
+            this.clientGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ALabel
             // 
             this.ALabel.AutoSize = true;
             this.ALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ALabel.Location = new System.Drawing.Point(117, 294);
+            this.ALabel.Location = new System.Drawing.Point(117, 235);
             this.ALabel.Name = "ALabel";
             this.ALabel.Size = new System.Drawing.Size(50, 37);
             this.ALabel.TabIndex = 0;
@@ -64,7 +68,7 @@
             // 
             this.BLabel.AutoSize = true;
             this.BLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLabel.Location = new System.Drawing.Point(117, 379);
+            this.BLabel.Location = new System.Drawing.Point(117, 320);
             this.BLabel.Name = "BLabel";
             this.BLabel.Size = new System.Drawing.Size(49, 37);
             this.BLabel.TabIndex = 1;
@@ -74,7 +78,7 @@
             // 
             this.DLabel.AutoSize = true;
             this.DLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DLabel.Location = new System.Drawing.Point(456, 379);
+            this.DLabel.Location = new System.Drawing.Point(456, 320);
             this.DLabel.Name = "DLabel";
             this.DLabel.Size = new System.Drawing.Size(51, 37);
             this.DLabel.TabIndex = 3;
@@ -84,7 +88,7 @@
             // 
             this.CLabel.AutoSize = true;
             this.CLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CLabel.Location = new System.Drawing.Point(456, 294);
+            this.CLabel.Location = new System.Drawing.Point(456, 235);
             this.CLabel.Name = "CLabel";
             this.CLabel.Size = new System.Drawing.Size(51, 37);
             this.CLabel.TabIndex = 2;
@@ -93,7 +97,7 @@
             // ATextBox
             // 
             this.ATextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATextBox.Location = new System.Drawing.Point(173, 294);
+            this.ATextBox.Location = new System.Drawing.Point(173, 235);
             this.ATextBox.Name = "ATextBox";
             this.ATextBox.ReadOnly = true;
             this.ATextBox.Size = new System.Drawing.Size(261, 44);
@@ -102,7 +106,7 @@
             // CTextBox
             // 
             this.CTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CTextBox.Location = new System.Drawing.Point(513, 294);
+            this.CTextBox.Location = new System.Drawing.Point(513, 235);
             this.CTextBox.Name = "CTextBox";
             this.CTextBox.ReadOnly = true;
             this.CTextBox.Size = new System.Drawing.Size(261, 44);
@@ -111,7 +115,7 @@
             // BTextBox
             // 
             this.BTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTextBox.Location = new System.Drawing.Point(173, 379);
+            this.BTextBox.Location = new System.Drawing.Point(173, 320);
             this.BTextBox.Name = "BTextBox";
             this.BTextBox.ReadOnly = true;
             this.BTextBox.Size = new System.Drawing.Size(261, 44);
@@ -120,7 +124,7 @@
             // DTextBox
             // 
             this.DTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTextBox.Location = new System.Drawing.Point(513, 379);
+            this.DTextBox.Location = new System.Drawing.Point(513, 320);
             this.DTextBox.Name = "DTextBox";
             this.DTextBox.ReadOnly = true;
             this.DTextBox.Size = new System.Drawing.Size(261, 44);
@@ -129,11 +133,11 @@
             // MainTextBox
             // 
             this.MainTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainTextBox.Location = new System.Drawing.Point(12, 53);
+            this.MainTextBox.Location = new System.Drawing.Point(12, 71);
             this.MainTextBox.Multiline = true;
             this.MainTextBox.Name = "MainTextBox";
             this.MainTextBox.ReadOnly = true;
-            this.MainTextBox.Size = new System.Drawing.Size(897, 212);
+            this.MainTextBox.Size = new System.Drawing.Size(897, 141);
             this.MainTextBox.TabIndex = 8;
             // 
             // toolStrip1
@@ -191,7 +195,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.IPAdressLB,
             this.ListenStatusLB});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 485);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 763);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(921, 22);
             this.statusStrip1.TabIndex = 12;
@@ -209,11 +213,37 @@
             this.ListenStatusLB.Size = new System.Drawing.Size(41, 17);
             this.ListenStatusLB.Text = "Listen:";
             // 
+            // clientListLabel
+            // 
+            this.clientListLabel.AutoSize = true;
+            this.clientListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientListLabel.Location = new System.Drawing.Point(78, 389);
+            this.clientListLabel.Name = "clientListLabel";
+            this.clientListLabel.Size = new System.Drawing.Size(107, 25);
+            this.clientListLabel.TabIndex = 14;
+            this.clientListLabel.Text = "Client List";
+            // 
+            // clientGridView
+            // 
+            this.clientGridView.AllowUserToAddRows = false;
+            this.clientGridView.AllowUserToDeleteRows = false;
+            this.clientGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.clientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientGridView.Location = new System.Drawing.Point(83, 417);
+            this.clientGridView.Name = "clientGridView";
+            this.clientGridView.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.clientGridView.Size = new System.Drawing.Size(709, 323);
+            this.clientGridView.TabIndex = 15;
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 507);
+            this.ClientSize = new System.Drawing.Size(921, 785);
+            this.Controls.Add(this.clientGridView);
+            this.Controls.Add(this.clientListLabel);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainTextBox);
@@ -231,6 +261,7 @@
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +286,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel IPAdressLB;
         private System.Windows.Forms.ToolStripStatusLabel ListenStatusLB;
+        private System.Windows.Forms.Label clientListLabel;
+        private System.Windows.Forms.DataGridView clientGridView;
 
     }
 }
