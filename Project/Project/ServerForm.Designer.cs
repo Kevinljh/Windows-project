@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ALabel = new System.Windows.Forms.Label();
             this.BLabel = new System.Windows.Forms.Label();
             this.DLabel = new System.Windows.Forms.Label();
@@ -42,13 +42,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StartBtn = new System.Windows.Forms.ToolStripButton();
             this.StopBtn = new System.Windows.Forms.ToolStripButton();
-            this.ListenBtn = new System.Windows.Forms.ToolStripButton();
             this.SettingStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.IPAdressLB = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ListenStatusLB = new System.Windows.Forms.ToolStripStatusLabel();
             this.clientListLabel = new System.Windows.Forms.Label();
             this.clientGridView = new System.Windows.Forms.DataGridView();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientGridView)).BeginInit();
@@ -145,8 +144,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartBtn,
             this.StopBtn,
-            this.ListenBtn,
-            this.SettingStripLabel});
+            this.SettingStripLabel,
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(921, 25);
@@ -173,16 +172,6 @@
             this.StopBtn.Text = "Stop";
             this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
-            // ListenBtn
-            // 
-            this.ListenBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ListenBtn.Image = ((System.Drawing.Image)(resources.GetObject("ListenBtn.Image")));
-            this.ListenBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ListenBtn.Name = "ListenBtn";
-            this.ListenBtn.Size = new System.Drawing.Size(42, 22);
-            this.ListenBtn.Text = "Listen";
-            this.ListenBtn.Click += new System.EventHandler(this.ListenBtn_Click);
-            // 
             // SettingStripLabel
             // 
             this.SettingStripLabel.Name = "SettingStripLabel";
@@ -193,8 +182,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.IPAdressLB,
-            this.ListenStatusLB});
+            this.IPAdressLB});
             this.statusStrip1.Location = new System.Drawing.Point(0, 763);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(921, 22);
@@ -206,12 +194,6 @@
             this.IPAdressLB.Name = "IPAdressLB";
             this.IPAdressLB.Size = new System.Drawing.Size(20, 17);
             this.IPAdressLB.Text = "IP:";
-            // 
-            // ListenStatusLB
-            // 
-            this.ListenStatusLB.Name = "ListenStatusLB";
-            this.ListenStatusLB.Size = new System.Drawing.Size(41, 17);
-            this.ListenStatusLB.Text = "Listen:";
             // 
             // clientListLabel
             // 
@@ -232,10 +214,19 @@
             this.clientGridView.Location = new System.Drawing.Point(83, 417);
             this.clientGridView.Name = "clientGridView";
             this.clientGridView.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.clientGridView.Size = new System.Drawing.Size(709, 323);
             this.clientGridView.TabIndex = 15;
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // ServerForm
             // 
@@ -281,13 +272,12 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton StartBtn;
         private System.Windows.Forms.ToolStripButton StopBtn;
-        private System.Windows.Forms.ToolStripButton ListenBtn;
         private System.Windows.Forms.ToolStripLabel SettingStripLabel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel IPAdressLB;
-        private System.Windows.Forms.ToolStripStatusLabel ListenStatusLB;
         private System.Windows.Forms.Label clientListLabel;
         private System.Windows.Forms.DataGridView clientGridView;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
 
     }
 }
