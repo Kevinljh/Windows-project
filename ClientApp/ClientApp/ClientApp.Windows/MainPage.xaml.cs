@@ -33,12 +33,14 @@ namespace ClientApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        //timer
         DispatcherTimer dispatcherTimer;        
         int seconds2 = 0;
         int seconds = 1;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         MyHttpClient client;
+        //control that can be user by client class
         public TextBlock messageTB;
         public Button nextGameBtn;
         public TextBlock questionTB;
@@ -292,16 +294,22 @@ namespace ClientApp
             //"A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
         }
 
+        // NAME     :   ResultMessage()
+        // PURPOSE  :   Show error messages or result
         public void ResultMessage(string result)
         {
             ResultTB.Text = result;
         }
 
+        // NAME     :   ShowQuestion()
+        // PURPOSE  :   Display questions
         public void ShowQuestion(string question)
         {
             QuestionPlaceHolder.Text = question;
         }
 
+        // NAME     :   NextGameBtn_Click()
+        // PURPOSE  :   Wait for next game to start
         private void NextGameBtn_Click(object sender, RoutedEventArgs e)
         {
             client.sendReady();
