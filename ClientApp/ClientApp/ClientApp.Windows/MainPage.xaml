@@ -45,11 +45,11 @@
         <Button x:Name ="ButtonB" Content="B" HorizontalAlignment="Left" Margin="425,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="BButton_Click"/>
         <Button x:Name ="ButtonC" Content="C" HorizontalAlignment="Left" Margin="737,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="CButton_Click"/>
         <Button x:Name ="ButtonD" Content="D" HorizontalAlignment="Left" Margin="1061,374,0,0" VerticalAlignment="Top" Height="144" Width="210" FontSize="72" FontWeight="Bold" BorderThickness="10" Grid.Row="1" BorderBrush="#FF204255" Background="#FF3C1B76" Click="DButton_Click"/>
-        <TextBlock x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Time: 00" VerticalAlignment="Top" Height="70" Width="188" FontSize="48" Loaded="Timer_Load"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
+        <TextBlock x:Name="Timer" HorizontalAlignment="Left" Margin="1168,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Time: 00" VerticalAlignment="Top" Height="49" Width="188" FontSize="48" Loaded="Timer_Load"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,548,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="49" Width="150" FontSize="48"/>
         <TextBlock x:Name="ScoreTb" Text="{Binding Path=scoreProperty}" HorizontalAlignment="Left" Margin="155,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="150" FontSize="48"/>
         <TextBlock x:Name="QuestionPlaceHolder" HorizontalAlignment="Left" Margin="85,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" Height="344" Width="1213" Loaded="QuestionPlaceHolder_Loaded"/>
-        <TextBlock x:Name="ResultTB" HorizontalAlignment="Left" Margin="376,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="625" FontSize="14"/>
+        <TextBlock x:Name="ResultTB" HorizontalAlignment="Left" Margin="376,548,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="625" FontSize="20" TextAlignment="Center"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="1572,78,-306,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

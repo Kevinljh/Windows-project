@@ -33,20 +33,19 @@ namespace ClientApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-        DispatcherTimer dispatcherTimer;
-        
+        //timer
+        DispatcherTimer dispatcherTimer;        
         int seconds2 = 0;
-        int seconds = 0;
-
+        int seconds = 1;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
         MyHttpClient client;
-
+        //control that can be user by client class
         public TextBlock messageTB;
         public Button nextGameBtn;
         public TextBlock questionTB;
+        public bool gameIsRuning;
+
         /// <summary>
         /// This can be changed to a strongly typed view model.
         /// </summary>
@@ -74,6 +73,7 @@ namespace ClientApp
             messageTB = ResultTB;
             nextGameBtn = NextGameBtn;
             questionTB = QuestionPlaceHolder;
+            gameIsRuning = false;
         }
 
         /// <summary>
@@ -111,6 +111,7 @@ namespace ClientApp
             client = e.NavigationParameter as MyHttpClient;
             client.myMainPage = this;
             ScoreTb.DataContext = client;
+            messageTB.Text = "Please wait everybody ....";
         }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace ClientApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-        }
+         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -163,25 +164,24 @@ namespace ClientApp
         void dispatcherTimer_Tick(object sender, object e)
         {
             Timer.Text = "Time:" + seconds2 + seconds;
-                       
-            
+                                  
             seconds++;
-            if (seconds > 9)
+            if (seconds > 10)
             {
-                seconds2++;
-                seconds = 0;
+                //seconds2++;
+                //seconds = 0;
+                TimerReset();
             }
-            else if (seconds2 > 0)
-            {
-                seconds2 = 0;
-                seconds = 0;
-                disableEnable();
-            }
+            //else if (seconds2 > 0)
+            //{
+            //    seconds2 = 0;
+            //    seconds = 0;               
+            //}
 
-            if (seconds2 == 0 && seconds == 0)
+            if (seconds2 == 0 && seconds == 1)
             {
-                //TimerStop();
                 client.sendQuestionRequest();
+                Enable();
             }
 
             // save the session variable to keep track of seconds while application is closed or on another page
@@ -217,27 +217,35 @@ namespace ClientApp
         // PURPOSE  :   Function To Reset the dispatcherTimer to 00
         private void TimerReset()
         {
-            seconds = 0;
+            seconds = 1;
             seconds2 = 0;
             Windows.Storage.ApplicationDataContainer roamingSettings =
             Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["seconds"] = 0;
+            roamingSettings.Values["seconds"] = 1;
             roamingSettings.Values["seconds2"] = 0;
         }
 
         // NAME     :   AButton_Click()
         // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
-        private void disableEnable()
+        public void Disable()
         {
-            if ((ButtonA.IsEnabled == true) || (ButtonB.IsEnabled == true) || (ButtonC.IsEnabled == true) || (ButtonD.IsEnabled == true))
+            if (gameIsRuning)
             {
-                ButtonA.IsEnabled = false;
-                ButtonB.IsEnabled = false;
-                ButtonC.IsEnabled = false;
-                ButtonD.IsEnabled = false;
-
+                if ((ButtonA.IsEnabled == true) || (ButtonB.IsEnabled == true) || (ButtonC.IsEnabled == true) || (ButtonD.IsEnabled == true))
+                {
+                    ButtonA.IsEnabled = false;
+                    ButtonB.IsEnabled = false;
+                    ButtonC.IsEnabled = false;
+                    ButtonD.IsEnabled = false;
+                }
             }
-            else if ((ButtonA.IsEnabled == false) || (ButtonB.IsEnabled == false) || (ButtonC.IsEnabled == false) || (ButtonD.IsEnabled == false))
+        }
+
+        // NAME     :   AButton_Click()
+        // PURPOSE  :   When Button "a" is pressed the client will send that user pressed "a"
+        public void Enable()
+        {
+            if ((ButtonA.IsEnabled == false) || (ButtonB.IsEnabled == false) || (ButtonC.IsEnabled == false) || (ButtonD.IsEnabled == false))
             {
                 ButtonA.IsEnabled = true;
                 ButtonB.IsEnabled = true;
@@ -251,9 +259,7 @@ namespace ClientApp
         private void AButton_Click(object sender, RoutedEventArgs e)
         {      
             client.sendAnwser("a");
-            disableEnable();
-            
-          
+            Disable();         
         }
 
         // NAME     :   BButton_Click()
@@ -261,7 +267,7 @@ namespace ClientApp
         private void BButton_Click(object sender, RoutedEventArgs e)
         {     
             client.sendAnwser("b");
-            disableEnable();
+            Disable();
         }
 
         // NAME     :   CButton_Click()
@@ -269,7 +275,7 @@ namespace ClientApp
         private void CButton_Click(object sender, RoutedEventArgs e)
         {  
             client.sendAnwser("c");
-            disableEnable();
+            Disable();
         }
 
         // NAME     :   DButton_Click()
@@ -277,7 +283,7 @@ namespace ClientApp
         private void DButton_Click(object sender, RoutedEventArgs e)
         {
             client.sendAnwser("d");
-            disableEnable();
+            Disable();
         }
 
         // NAME     :   QuestionPlaceHolder_Loaded()
@@ -288,18 +294,27 @@ namespace ClientApp
             //"A) 2 and a half years \n" + "B) 10 years \n" + "C) 4 months \n" + "D) 3 and a half years ";
         }
 
+        // NAME     :   ResultMessage()
+        // PURPOSE  :   Show error messages or result
         public void ResultMessage(string result)
         {
             ResultTB.Text = result;
         }
 
+        // NAME     :   ShowQuestion()
+        // PURPOSE  :   Display questions
         public void ShowQuestion(string question)
         {
             QuestionPlaceHolder.Text = question;
         }
 
+        // NAME     :   NextGameBtn_Click()
+        // PURPOSE  :   Wait for next game to start
         private void NextGameBtn_Click(object sender, RoutedEventArgs e)
         {
+            client.sendReady();
+            nextGameBtn.IsEnabled = false;
+            messageTB.Text = "Wait for next game to start ...";
             client.sendReady();
         }
     }

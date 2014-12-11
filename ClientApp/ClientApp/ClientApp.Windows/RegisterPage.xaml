@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="ServerIPTB" HorizontalAlignment="Left" Margin="620,244,0,0" TextWrapping="Wrap" Text="142.156.111.131:8081" VerticalAlignment="Top" Width="363" FontSize="24"/>
+        <TextBox x:Name="ServerIPTB" HorizontalAlignment="Left" Margin="620,244,0,0" TextWrapping="Wrap" Text="10.113.21.29:8081" VerticalAlignment="Top" Width="363" FontSize="24"/>
         <TextBox x:Name="NameTB" HorizontalAlignment="Left" Margin="620,380,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="363" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="419,259,0,0" TextWrapping="Wrap" Text="Server IP" VerticalAlignment="Top" FontSize="24"/>
         <TextBlock HorizontalAlignment="Left" Margin="437,395,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="24"/>
