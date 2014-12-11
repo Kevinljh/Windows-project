@@ -42,6 +42,8 @@
             this.optionGridView = new System.Windows.Forms.DataGridView();
             this.QuestionComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.backLabel = new System.Windows.Forms.ToolStripLabel();
             this.Setting.SuspendLayout();
             this.Category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridView)).BeginInit();
@@ -49,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.questionGridView)).BeginInit();
             this.Option.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionGridView)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Setting
@@ -56,10 +59,10 @@
             this.Setting.Controls.Add(this.Category);
             this.Setting.Controls.Add(this.Question);
             this.Setting.Controls.Add(this.Option);
-            this.Setting.Location = new System.Drawing.Point(13, 13);
+            this.Setting.Location = new System.Drawing.Point(13, 40);
             this.Setting.Name = "Setting";
             this.Setting.SelectedIndex = 0;
-            this.Setting.Size = new System.Drawing.Size(648, 537);
+            this.Setting.Size = new System.Drawing.Size(648, 510);
             this.Setting.TabIndex = 0;
             // 
             // Category
@@ -69,14 +72,14 @@
             this.Category.Location = new System.Drawing.Point(4, 22);
             this.Category.Name = "Category";
             this.Category.Padding = new System.Windows.Forms.Padding(3);
-            this.Category.Size = new System.Drawing.Size(640, 511);
+            this.Category.Size = new System.Drawing.Size(640, 484);
             this.Category.TabIndex = 1;
             this.Category.Text = "Edit Category";
             this.Category.UseVisualStyleBackColor = true;
             // 
             // saveCategorybutton
             // 
-            this.saveCategorybutton.Location = new System.Drawing.Point(255, 473);
+            this.saveCategorybutton.Location = new System.Drawing.Point(256, 436);
             this.saveCategorybutton.Name = "saveCategorybutton";
             this.saveCategorybutton.Size = new System.Drawing.Size(86, 32);
             this.saveCategorybutton.TabIndex = 1;
@@ -89,7 +92,7 @@
             this.categoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoryGridView.Location = new System.Drawing.Point(7, 38);
             this.categoryGridView.Name = "categoryGridView";
-            this.categoryGridView.Size = new System.Drawing.Size(627, 428);
+            this.categoryGridView.Size = new System.Drawing.Size(627, 392);
             this.categoryGridView.TabIndex = 0;
             // 
             // Question
@@ -101,14 +104,14 @@
             this.Question.Location = new System.Drawing.Point(4, 22);
             this.Question.Name = "Question";
             this.Question.Padding = new System.Windows.Forms.Padding(3);
-            this.Question.Size = new System.Drawing.Size(640, 511);
+            this.Question.Size = new System.Drawing.Size(640, 484);
             this.Question.TabIndex = 2;
             this.Question.Text = "Edit Question";
             this.Question.UseVisualStyleBackColor = true;
             // 
             // saveQuestionbutton
             // 
-            this.saveQuestionbutton.Location = new System.Drawing.Point(241, 466);
+            this.saveQuestionbutton.Location = new System.Drawing.Point(242, 442);
             this.saveQuestionbutton.Name = "saveQuestionbutton";
             this.saveQuestionbutton.Size = new System.Drawing.Size(147, 39);
             this.saveQuestionbutton.TabIndex = 3;
@@ -121,7 +124,7 @@
             this.questionGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.questionGridView.Location = new System.Drawing.Point(21, 99);
             this.questionGridView.Name = "questionGridView";
-            this.questionGridView.Size = new System.Drawing.Size(603, 360);
+            this.questionGridView.Size = new System.Drawing.Size(603, 332);
             this.questionGridView.TabIndex = 2;
             // 
             // categorycomboBox
@@ -151,14 +154,14 @@
             this.Option.Location = new System.Drawing.Point(4, 22);
             this.Option.Name = "Option";
             this.Option.Padding = new System.Windows.Forms.Padding(3);
-            this.Option.Size = new System.Drawing.Size(640, 511);
+            this.Option.Size = new System.Drawing.Size(640, 484);
             this.Option.TabIndex = 3;
             this.Option.Text = "Edit Option";
             this.Option.UseVisualStyleBackColor = true;
             // 
             // OptionSavebutton
             // 
-            this.OptionSavebutton.Location = new System.Drawing.Point(255, 457);
+            this.OptionSavebutton.Location = new System.Drawing.Point(256, 433);
             this.OptionSavebutton.Name = "OptionSavebutton";
             this.OptionSavebutton.Size = new System.Drawing.Size(116, 48);
             this.OptionSavebutton.TabIndex = 3;
@@ -192,11 +195,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Please Select One Question:";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backLabel});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(673, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // backLabel
+            // 
+            this.backLabel.Name = "backLabel";
+            this.backLabel.Size = new System.Drawing.Size(50, 22);
+            this.backLabel.Text = "Go Back";
+            this.backLabel.Click += new System.EventHandler(this.backLabel_Click);
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 562);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.Setting);
             this.Name = "SettingForm";
             this.Text = "SettingForm";
@@ -210,7 +231,10 @@
             this.Option.ResumeLayout(false);
             this.Option.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionGridView)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -230,6 +254,8 @@
         private System.Windows.Forms.Button OptionSavebutton;
         private System.Windows.Forms.DataGridView optionGridView;
         private System.Windows.Forms.ComboBox QuestionComboBox;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel backLabel;
 
     }
 }

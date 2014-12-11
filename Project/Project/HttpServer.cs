@@ -8,8 +8,9 @@ using System.Net.Http;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using System.Collections;
+using System.Net.Sockets;
+
 namespace Project
 {
     public class HttpServer : IDisposable
@@ -24,21 +25,23 @@ namespace Project
         ServerForm myFormContrl;
         GameEngine game;
         public bool gameIsRuning = false;
-        List<Client> myClientList;
+        List<Client> myClientList; 
         public delegate void UpdateClientList(List<Client> clientList);
         public UpdateClientList UpdateClientListDelegate;
         public HttpServer server;
         BindingSource source;
         string optionString = "";
+        public int CategoryId { set; get; }
         public HttpServer(ServerForm myForm)
         {
+            
             listener = new HttpListener();
             listenerThread = new Thread(HandleRequests);
             stop = new ManualResetEvent(false);
             myFormContrl = myForm;
-            game = new GameEngine(myFormContrl, this);
-            serverUrl = LocalIPAddress();
+            //game = new GameEngine(myFormContrl, this, categoryId);
             myClientList = new List<Client>();
+            serverUrl = LocalIPAddress();
         }
 
         public void Start()
@@ -211,7 +214,7 @@ namespace Project
         {
             gameIsRuning = true;
             //SendGo();
-
+            game = new GameEngine(myFormContrl, this, CategoryId);
             game.SwitchQuestions();
             gameIsRuning = false;
         }
@@ -221,32 +224,25 @@ namespace Project
             foreach (Client client in myClientList)
             {
                 string optionStr = "";
-                
-                foreach (Option option in game.Options){
-
-                    optionStr += option.OptionName;
-                    optionStr += "\n";            
-                }            
-                WriteResponse(client.Context, game.currentQuestion.Content+"\n"+optionStr);
-            }
-        }
-
-        public string LocalIPAddress()
-        {
-            IPHostEntry host;
-            string localIP = "";
-            host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                if (game.currentQuestion.Content != "Game Over.")
                 {
-                    localIP = ip.ToString();
-                    break;
+                    foreach (Option option in game.Options)
+                    {
+
+                        optionStr += option.OptionName;
+                        optionStr += "\n";
+                    }
+                    WriteResponse(client.Context, game.currentQuestion.Content + "\n" + optionStr);
                 }
+                else
+                {
+                    WriteResponse(client.Context, "end" );
+                }
+               
             }
-            localIP += ":8081/";
-            return localIP;
         }
+
+        
 
         private string ExtractTaskMessage(string content, string target)
         {
@@ -300,6 +296,23 @@ namespace Project
         private void DeleteClient(string clientName)
         {
             myClientList.Clear();
+        }
+
+        public string LocalIPAddress()
+        {
+            IPHostEntry host;
+            string localIP = "";
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                    break;
+                }
+            }
+            localIP += ":8081/";
+            return localIP;
         }
     }
 }

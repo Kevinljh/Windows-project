@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ALabel = new System.Windows.Forms.Label();
             this.BLabel = new System.Windows.Forms.Label();
             this.DLabel = new System.Windows.Forms.Label();
@@ -40,14 +40,13 @@
             this.DTextBox = new System.Windows.Forms.TextBox();
             this.MainTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.StartBtn = new System.Windows.Forms.ToolStripButton();
             this.StopBtn = new System.Windows.Forms.ToolStripButton();
             this.SettingStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.categoryDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.IPAdressLB = new System.Windows.Forms.ToolStripStatusLabel();
             this.clientListLabel = new System.Windows.Forms.Label();
             this.clientGridView = new System.Windows.Forms.DataGridView();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientGridView)).BeginInit();
@@ -142,25 +141,14 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StartBtn,
+            this.categoryDropDownButton,
             this.StopBtn,
-            this.SettingStripLabel,
-            this.toolStripDropDownButton1});
+            this.SettingStripLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(921, 25);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // StartBtn
-            // 
-            this.StartBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.StartBtn.Image = ((System.Drawing.Image)(resources.GetObject("StartBtn.Image")));
-            this.StartBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StartBtn.Name = "StartBtn";
-            this.StartBtn.Size = new System.Drawing.Size(35, 22);
-            this.StartBtn.Text = "Start";
-            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // StopBtn
             // 
@@ -178,6 +166,15 @@
             this.SettingStripLabel.Size = new System.Drawing.Size(44, 22);
             this.SettingStripLabel.Text = "Setting";
             this.SettingStripLabel.Click += new System.EventHandler(this.SettingStripLabel_Click);
+            // 
+            // categoryDropDownButton
+            // 
+            this.categoryDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.categoryDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("categoryDropDownButton.Image")));
+            this.categoryDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.categoryDropDownButton.Name = "categoryDropDownButton";
+            this.categoryDropDownButton.Size = new System.Drawing.Size(44, 22);
+            this.categoryDropDownButton.Text = "Start";
             // 
             // statusStrip1
             // 
@@ -214,19 +211,10 @@
             this.clientGridView.Location = new System.Drawing.Point(83, 417);
             this.clientGridView.Name = "clientGridView";
             this.clientGridView.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.clientGridView.Size = new System.Drawing.Size(709, 323);
             this.clientGridView.TabIndex = 15;
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // ServerForm
             // 
@@ -270,14 +258,13 @@
         private System.Windows.Forms.TextBox DTextBox;
         private System.Windows.Forms.TextBox MainTextBox;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton StartBtn;
         private System.Windows.Forms.ToolStripButton StopBtn;
         private System.Windows.Forms.ToolStripLabel SettingStripLabel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel IPAdressLB;
         private System.Windows.Forms.Label clientListLabel;
         private System.Windows.Forms.DataGridView clientGridView;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripDropDownButton categoryDropDownButton;
 
     }
 }
