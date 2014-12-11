@@ -28,9 +28,7 @@ namespace Project
         List<Client> myClientList; 
         public delegate void UpdateClientList(List<Client> clientList);
         public UpdateClientList UpdateClientListDelegate;
-        public HttpServer server;
-        BindingSource source;
-        string optionString = "";
+
         public int CategoryId { set; get; }
         public HttpServer(ServerForm myForm)
         {
@@ -116,10 +114,10 @@ namespace Project
             string requestDate = GetRequestString(request);
             string clientRequestTask = ExtractTaskMessage(requestDate, "myTask");
             string clientName = ExtractTaskMessage(requestDate, "myName");
+            bool isClientExist = FindClient(clientName);
 
             if (clientRequestTask == "logIn")
-            {               
-                bool isClientExist = FindClient(clientName);
+            {                              
                 if(isClientExist)
                 {
                     WriteResponse(context, "client already existed");
@@ -135,28 +133,33 @@ namespace Project
             }
             else if (clientRequestTask == "ready")
             {
-                AddClient(context, clientName);
+                if (!isClientExist)
+                {
+                    AddClient(context, clientName);
+                }
             }
             else if (clientRequestTask == "answer")
             {
                 string answer = ExtractTaskMessage(requestDate, "myAnswer");
-
-                //respose result
-                if (answer == game.currentQuestion.Answer.Substring(0,1))
+                if (gameIsRuning)
                 {
-                    foreach (Client kvp in myClientList)
+                    //respose result
+                    if (answer == game.currentQuestion.Answer.Substring(0, 1))
                     {
-                        if (kvp.Name == clientName)
+                        foreach (Client kvp in myClientList)
                         {
-                            kvp.Score++;
+                            if (kvp.Name == clientName)
+                            {
+                                kvp.Score++;
+                            }
                         }
+                        updateClientList();
+                        WriteResponse(context, "t");
                     }
-                    updateClientList();
-                    WriteResponse(context, "t");
-                }
-                else
-                {
-                    WriteResponse(context, "f");
+                    else
+                    {
+                        WriteResponse(context, "f");
+                    }
                 }
             }
             else if(clientRequestTask == "question")
@@ -192,28 +195,42 @@ namespace Project
 
         public void Stop()
         {
+            //stop listening
             stop.Set();
             listenerThread.Join();
-            listener.Stop();
+            listener.Stop();                     
+        }
+
+        public void StopGame()
+        {
+            //stop current game
+            myFormContrl.EndGame();
+            gameIsRuning = false;
         }
 
         private void WriteResponse(HttpListenerContext context, string responseString)
         {
-            //get a response object
-            using (HttpListenerResponse response = context.Response)
+            try
             {
-                //construct response
-                byte[] buffer = Encoding.UTF8.GetBytes(responseString);
-                response.ContentLength64 = buffer.LongLength;
-                response.OutputStream.Write(buffer, 0, buffer.Length);
+                //get a response object
+                using (HttpListenerResponse response = context.Response)
+                {
+                    //construct response
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.LongLength;
+                    response.OutputStream.Write(buffer, 0, buffer.Length);
+                }
+                context.Response.Close();
             }
-            context.Response.Close();
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void GameStart()
         {
             gameIsRuning = true;
-            //SendGo();
             game = new GameEngine(myFormContrl, this, CategoryId);
             game.SwitchQuestions();
             gameIsRuning = false;
@@ -237,6 +254,8 @@ namespace Project
                 else
                 {
                     WriteResponse(client.Context, "end" );
+                    myClientList.Clear();
+                    break;
                 }
                
             }
@@ -314,5 +333,6 @@ namespace Project
             localIP += ":8081/";
             return localIP;
         }
+
     }
 }

@@ -35,8 +35,7 @@ namespace Project
         public void SwitchQuestions()
         {       
             foreach (Question question in questions)
-            {
-                
+            {          
                 currentQuestion = question;
                 this.Options = dbAccessor.GetOptions(question.ID);
                 myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, Options });
@@ -48,7 +47,8 @@ namespace Project
             currentQuestion = temp;
             int i = 0;
             //clean options in UI
-            foreach (Option option in Options){
+            foreach (Option option in Options)
+            {
                 if (i == 0)
                 {
                     option.OptionName = "a-";

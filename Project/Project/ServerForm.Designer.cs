@@ -40,9 +40,9 @@
             this.DTextBox = new System.Windows.Forms.TextBox();
             this.MainTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.categoryDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.StopBtn = new System.Windows.Forms.ToolStripButton();
             this.SettingStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.categoryDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.IPAdressLB = new System.Windows.Forms.ToolStripStatusLabel();
             this.clientListLabel = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             // 
             this.ALabel.AutoSize = true;
             this.ALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ALabel.Location = new System.Drawing.Point(117, 235);
+            this.ALabel.Location = new System.Drawing.Point(132, 501);
             this.ALabel.Name = "ALabel";
             this.ALabel.Size = new System.Drawing.Size(50, 37);
             this.ALabel.TabIndex = 0;
@@ -66,7 +66,7 @@
             // 
             this.BLabel.AutoSize = true;
             this.BLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BLabel.Location = new System.Drawing.Point(117, 320);
+            this.BLabel.Location = new System.Drawing.Point(132, 586);
             this.BLabel.Name = "BLabel";
             this.BLabel.Size = new System.Drawing.Size(49, 37);
             this.BLabel.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             this.DLabel.AutoSize = true;
             this.DLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DLabel.Location = new System.Drawing.Point(456, 320);
+            this.DLabel.Location = new System.Drawing.Point(471, 586);
             this.DLabel.Name = "DLabel";
             this.DLabel.Size = new System.Drawing.Size(51, 37);
             this.DLabel.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.CLabel.AutoSize = true;
             this.CLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CLabel.Location = new System.Drawing.Point(456, 235);
+            this.CLabel.Location = new System.Drawing.Point(471, 501);
             this.CLabel.Name = "CLabel";
             this.CLabel.Size = new System.Drawing.Size(51, 37);
             this.CLabel.TabIndex = 2;
@@ -95,7 +95,7 @@
             // ATextBox
             // 
             this.ATextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ATextBox.Location = new System.Drawing.Point(173, 235);
+            this.ATextBox.Location = new System.Drawing.Point(188, 501);
             this.ATextBox.Name = "ATextBox";
             this.ATextBox.ReadOnly = true;
             this.ATextBox.Size = new System.Drawing.Size(261, 44);
@@ -104,7 +104,7 @@
             // CTextBox
             // 
             this.CTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CTextBox.Location = new System.Drawing.Point(513, 235);
+            this.CTextBox.Location = new System.Drawing.Point(528, 501);
             this.CTextBox.Name = "CTextBox";
             this.CTextBox.ReadOnly = true;
             this.CTextBox.Size = new System.Drawing.Size(261, 44);
@@ -113,7 +113,7 @@
             // BTextBox
             // 
             this.BTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTextBox.Location = new System.Drawing.Point(173, 320);
+            this.BTextBox.Location = new System.Drawing.Point(188, 586);
             this.BTextBox.Name = "BTextBox";
             this.BTextBox.ReadOnly = true;
             this.BTextBox.Size = new System.Drawing.Size(261, 44);
@@ -122,7 +122,7 @@
             // DTextBox
             // 
             this.DTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTextBox.Location = new System.Drawing.Point(513, 320);
+            this.DTextBox.Location = new System.Drawing.Point(528, 586);
             this.DTextBox.Name = "DTextBox";
             this.DTextBox.ReadOnly = true;
             this.DTextBox.Size = new System.Drawing.Size(261, 44);
@@ -135,7 +135,7 @@
             this.MainTextBox.Multiline = true;
             this.MainTextBox.Name = "MainTextBox";
             this.MainTextBox.ReadOnly = true;
-            this.MainTextBox.Size = new System.Drawing.Size(897, 141);
+            this.MainTextBox.Size = new System.Drawing.Size(897, 299);
             this.MainTextBox.TabIndex = 8;
             // 
             // toolStrip1
@@ -146,9 +146,18 @@
             this.SettingStripLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(921, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1449, 25);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // categoryDropDownButton
+            // 
+            this.categoryDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.categoryDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("categoryDropDownButton.Image")));
+            this.categoryDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.categoryDropDownButton.Name = "categoryDropDownButton";
+            this.categoryDropDownButton.Size = new System.Drawing.Size(44, 22);
+            this.categoryDropDownButton.Text = "Start";
             // 
             // StopBtn
             // 
@@ -167,22 +176,13 @@
             this.SettingStripLabel.Text = "Setting";
             this.SettingStripLabel.Click += new System.EventHandler(this.SettingStripLabel_Click);
             // 
-            // categoryDropDownButton
-            // 
-            this.categoryDropDownButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.categoryDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("categoryDropDownButton.Image")));
-            this.categoryDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.categoryDropDownButton.Name = "categoryDropDownButton";
-            this.categoryDropDownButton.Size = new System.Drawing.Size(44, 22);
-            this.categoryDropDownButton.Text = "Start";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.IPAdressLB});
             this.statusStrip1.Location = new System.Drawing.Point(0, 763);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(921, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1449, 22);
             this.statusStrip1.TabIndex = 12;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -196,7 +196,7 @@
             // 
             this.clientListLabel.AutoSize = true;
             this.clientListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientListLabel.Location = new System.Drawing.Point(78, 389);
+            this.clientListLabel.Location = new System.Drawing.Point(972, 43);
             this.clientListLabel.Name = "clientListLabel";
             this.clientListLabel.Size = new System.Drawing.Size(107, 25);
             this.clientListLabel.TabIndex = 14;
@@ -208,19 +208,19 @@
             this.clientGridView.AllowUserToDeleteRows = false;
             this.clientGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.clientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.clientGridView.Location = new System.Drawing.Point(83, 417);
+            this.clientGridView.Location = new System.Drawing.Point(977, 71);
             this.clientGridView.Name = "clientGridView";
             this.clientGridView.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.clientGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.clientGridView.Size = new System.Drawing.Size(709, 323);
+            this.clientGridView.Size = new System.Drawing.Size(457, 559);
             this.clientGridView.TabIndex = 15;
             // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 785);
+            this.ClientSize = new System.Drawing.Size(1449, 785);
             this.Controls.Add(this.clientGridView);
             this.Controls.Add(this.clientListLabel);
             this.Controls.Add(this.statusStrip1);
@@ -236,6 +236,7 @@
             this.Controls.Add(this.ALabel);
             this.Name = "ServerForm";
             this.Text = "Server";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerForm_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
