@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+* FILE          : ServerForm.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This is form class which is the ui of the server. All the class object are created in this class
+ *                and pass though the program
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +34,9 @@ namespace Project
         DBAccessor db = new DBAccessor();
         List<Category> categoryList;
         int categoryId = -1;
-        
 
+        // NAME     :   ServerForm()
+        // PURPOSE  :   Get all the attribute value in this constructor
         public ServerForm()
         { 
             InitializeComponent();
@@ -41,7 +50,6 @@ namespace Project
                 this.categoryDropDownButton.DropDownItems.Add(newChild);
             }
                 
-
             showTextDelegate = new ShowText(ShowTextMethod);
             changeQuestionDelegate = new ChangeQuestion(ChangeQuestionMethod);
             UpdateClientListDelegate = new UpdateClientList(UpdateClientListMethod);
@@ -52,6 +60,8 @@ namespace Project
             server.Start();
         }
 
+        // NAME     :   StartGame_Click()
+        // PURPOSE  :   Create a thread to run the game engine
         private void StartGame_Click(object sender, EventArgs e)
         {           
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
@@ -71,6 +81,8 @@ namespace Project
             }
         }
 
+        // NAME     :   StopBtn_Click()
+        // PURPOSE  :   Stop the game during the excution
         private void StopBtn_Click(object sender, EventArgs e)
         {
             server.StopGame();
@@ -81,11 +93,15 @@ namespace Project
             MainTextBox.Text = "";
         }
 
+        // NAME     :   ShowTextMethod()
+        // PURPOSE  :   This is a delegate handler function
         public void ShowTextMethod(string myString)
         {
             MainTextBox.Text = myString;
         }
 
+        // NAME     :   EndGame()
+        // PURPOSE  :   Stop the game engine
         public void EndGame()
         {
             if (gameThread != null)
@@ -94,12 +110,16 @@ namespace Project
             }
         }
 
+        // NAME     :   UpdateClientListMethod()
+        // PURPOSE  :   Update the rank
         public void UpdateClientListMethod(List<Client> clientList)
         {
             source.DataSource = clientList;
             source.ResetBindings(false);
         }
 
+        // NAME     :   ChangeQuestionMethod()
+        // PURPOSE  :   Switch questions
         public void ChangeQuestionMethod(Question question, List<Option>optionList)
         {
             
@@ -155,7 +175,9 @@ namespace Project
                 }
             }
         }
-        
+
+        // NAME     :   SettingStripLabel_Click()
+        // PURPOSE  :   Go to the data base
         private void SettingStripLabel_Click(object sender, EventArgs e)
         {
             Form settingForm = new SettingForm(this);
@@ -163,9 +185,16 @@ namespace Project
             this.Hide(); 
         }
 
+        // NAME     :   ServerForm_FormClosing()
+        // PURPOSE  :   Client up everthing when close the program
         private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             server.Stop();
+            if (gameThread != null)
+            {
+                //not a good way the handler thread
+                gameThread.Abort();
+            }
         }     
     }
 }

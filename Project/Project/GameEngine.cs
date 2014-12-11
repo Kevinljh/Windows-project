@@ -1,4 +1,12 @@
-﻿﻿using System;
+﻿/*
+* FILE          : GameEngine.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This game engine is user the get the question for the server and send the game message to
+ *                client though http server class
+*/
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,35 +19,36 @@ namespace Project
     class GameEngine
     {
         ServerForm myFormContrl;
-        List<QuestionRepository> myQuestionRespository;
         Random rnd = new Random();
         private List<Question> questions;
-        public List<Option> Options{set; get;}
+        public List<Option> Options { set; get; }
         private DBAccessor dbAccessor;
         private int categoryId = 1;
         public Question currentQuestion;
         HttpServer myServer;
-        //signal r
-        //myFormContrl.Invoke(myFormContrl.showTextDelegate, new Object[] { requestDate });
+
+        // NAME     :   GameEngine()
+        // PURPOSE  :   Constructor
         public GameEngine(ServerForm myForm, HttpServer myServer, int pcategoryId)
         {
             myFormContrl = myForm;
-            myQuestionRespository = new List<QuestionRepository>();
-            GenerateQuestionRepository();
             dbAccessor = new DBAccessor();
             this.categoryId = pcategoryId;
             questions = dbAccessor.GetQuestions(categoryId);
             this.myServer = myServer;
         }
 
+        // NAME     :   SwitchQuestions()
+        // PURPOSE  :   Switch question every 20 sec
         public void SwitchQuestions()
-        {       
+        {
             foreach (Question question in questions)
-            {          
+            {
                 currentQuestion = question;
                 this.Options = dbAccessor.GetOptions(question.ID);
                 myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { question, Options });
                 myServer.SendQuestoin();
+                //wait for some time
                 Thread.Sleep(12000);
             }
             Question temp = new Question();
@@ -53,7 +62,7 @@ namespace Project
                 {
                     option.OptionName = "a-";
                 }
-                
+
                 if (i == 1)
                 {
                     option.OptionName = "b-";
@@ -72,64 +81,6 @@ namespace Project
             }
             myFormContrl.Invoke(myFormContrl.changeQuestionDelegate, new Object[] { temp, Options });
             myServer.SendQuestoin();
-        }
-
-
-        private void GenerateQuestionRepository()
-        {
-            QuestionRepository q1 = new QuestionRepository();
-            QuestionRepository q2 = new QuestionRepository();
-            QuestionRepository q3 = new QuestionRepository();
-            QuestionRepository q4 = new QuestionRepository();
-            QuestionRepository q5 = new QuestionRepository();
-
-            q1.foreColor = Color.Blue;
-            q1.text = Color.Blue.ToString();
-            q1.answer = true;
-
-            q2.foreColor = Color.Red;
-            q2.text = Color.Yellow.ToString();
-            q2.answer = false;
-
-            q3.foreColor = Color.Yellow;
-            q3.text = Color.Blue.ToString();
-            q3.answer = false;
-
-            q4.foreColor = Color.Green;
-            q4.text = Color.Green.ToString();
-            q4.answer = true;
-
-            q5.foreColor = Color.Black;
-            q5.text = Color.Black.ToString();
-            q5.answer = false;
-
-            myQuestionRespository.Add(q1);
-            myQuestionRespository.Add(q2);
-            myQuestionRespository.Add(q3);
-            myQuestionRespository.Add(q4);
-            myQuestionRespository.Add(q5);
-        }
-    }
-
-    public 
-
-    class QuestionRepository
-    {
-        public Color foreColor;
-        public string text;
-        public bool answer;
-
-        public Color GetForeColor()
-        {
-            return foreColor;
-        }
-        public string GetText()
-        {
-            return text;
-        }
-        public bool GetAnswer()
-        {
-            return answer;
         }
     }
 }

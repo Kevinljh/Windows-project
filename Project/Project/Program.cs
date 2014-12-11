@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+* FILE          : Program.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : Mine Game server main function file
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

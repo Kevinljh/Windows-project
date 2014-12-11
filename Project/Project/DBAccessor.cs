@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+* FILE          : DBAccessor.cs
+* PROJECT       : PROG2120 - Windows and Mobile Programming - final Project
+* PROGRAMMER    : Kevin Li, Bowen Zhuanj, Michael Da Silva
+* FIRST VERSION : 2014-12-06
+* DESCRIPTION   : This class is used to access the data base. We can do add, delete and update the database.
+ *                It can user store client's information, game data like questions and survey.
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
