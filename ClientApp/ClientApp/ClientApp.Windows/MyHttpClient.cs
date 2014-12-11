@@ -29,7 +29,7 @@ namespace ClientApp
         {
             postData = new List<KeyValuePair<string, string>>();
             serverUrl = "http://" + serverIP + "/";
-            myName = name;
+            myName = name;          
         }
 
         public string scoreProperty
@@ -133,7 +133,7 @@ namespace ClientApp
             }
             else if (content == "welcome")
             {
-                myMainPage.messageTB.Text = "Please wait for everybody";
+
             }
             //get return t/f(true/false) from server
             //increse score
@@ -145,17 +145,23 @@ namespace ClientApp
             }   
             else if (content == "f")
             {
-                myMainPage.ResultMessage("OH NO! YOU SUCK!");
+                myMainPage.ResultMessage("OH NO! YOU ARE WRONG!");
             }
             else if(content == "end")
             {
                 myMainPage.questionTB.Text = "Game Over";
                 myMainPage.nextGameBtn.IsEnabled = true;
+                myMainPage.TimerStop();
+                myMainPage.Disable();
+                myMainPage.gameIsRuning = false;
+
             }
             else
             {
                 myMainPage.ShowQuestion(content);
                 myMainPage.TimerStart();
+                myMainPage.ResultMessage("");
+                myMainPage.gameIsRuning = true;
             }
         }
 

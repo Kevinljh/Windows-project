@@ -58,6 +58,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="TextAlignment" />
       <RootProperty Name="Style" />
       <RootProperty Name="IsHitTestVisible" />
       <RootEvent Name="Loaded" />

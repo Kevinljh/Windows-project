@@ -49,8 +49,8 @@ namespace ClientApp
             //check if ip is valid and the name is already existed on server side
             if (client.logInError == 0)
             {
-                client.sendReady();
                 Frame.Navigate(typeof(MainPage), client);
+                client.sendReady();
             }
             else if(client.logInError == 1)
             {
